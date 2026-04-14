@@ -162,6 +162,8 @@ def _discover_tools():
         "tools.homeassistant_tool",
         "tools.opencode_tool",
         "tools.memory_recall_tool",
+        "tools.wiki_memory_tool",
+        "tools.qmd_search_tool",
     ]
     import importlib
 

@@ -86,6 +86,17 @@ _HERMES_CORE_TOOLS = [
     "memory_store",
     "memory_list",
     "memory_delete",
+    # Wiki memory system (Karpathy LLM Wiki pattern)
+    "wiki_ingest",
+    "wiki_query",
+    "wiki_read",
+    "wiki_update",
+    "wiki_list",
+    "wiki_log",
+    "wiki_index",
+    # Local search (qmd - optional, falls back to SQLite)
+    "qmd_index",
+    "qmd_search",
 ]
 
 
