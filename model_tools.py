@@ -173,6 +173,7 @@ def _discover_tools():
         "tools.available_models_tool",
         "tools.hexstrike_tool",
         "tools.orchestration_tool",
+        "tools.agentseal_tool",
     ]
     import importlib
 
