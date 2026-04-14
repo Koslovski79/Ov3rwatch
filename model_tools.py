@@ -161,6 +161,7 @@ def _discover_tools():
         # "tools.honcho_tools",  # Removed — Honcho is now a memory provider plugin
         "tools.homeassistant_tool",
         "tools.opencode_tool",
+        "tools.memory_recall_tool",
     ]
     import importlib
 

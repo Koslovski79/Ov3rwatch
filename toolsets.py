@@ -81,6 +81,11 @@ _HERMES_CORE_TOOLS = [
     "ha_call_service",
     # OpenCode CLI (gated on opencode availability via check_fn)
     "opencode",
+    # On-demand memory (never auto-loaded into context)
+    "memory_recall",
+    "memory_store",
+    "memory_list",
+    "memory_delete",
 ]
 
 
