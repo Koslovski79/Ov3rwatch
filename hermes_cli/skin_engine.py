@@ -56,10 +56,10 @@ All fields are optional. Missing values inherit from the ``default`` skin.
 
     # Branding: text strings used throughout the CLI
     branding:
-      agent_name: "Hermes Agent"          # Banner title, status display
+      agent_name: "Ov3rwatch"          # Banner title, status display
       welcome: "Welcome message"          # Shown at CLI startup
       goodbye: "Goodbye! ⚕"              # Shown on exit
-      response_label: " ⚕ Hermes "       # Response box header label
+      response_label: " ⚔ Ov3rwatch "       # Response box header label
       prompt_symbol: "❯ "                # Input prompt symbol
       help_header: "(^_^)? Commands"      # /help header text
 
@@ -81,7 +81,7 @@ USAGE
 
     skin = get_active_skin()
     print(skin.colors["banner_title"])    # "#FFD700"
-    print(skin.get_branding("agent_name"))  # "Hermes Agent"
+    print(skin.get_branding("agent_name"))  # "Ov3rwatch"
 
     set_active_skin("ares")               # Switch to built-in ares skin
     set_active_skin("mytheme")            # Switch to user skin from ~/.hermes/skins/
@@ -117,18 +117,22 @@ logger = logging.getLogger(__name__)
 # Skin data structure
 # =============================================================================
 
+
 @dataclass
 class SkinConfig:
     """Complete skin configuration."""
+
     name: str
     description: str = ""
     colors: Dict[str, str] = field(default_factory=dict)
     spinner: Dict[str, Any] = field(default_factory=dict)
     branding: Dict[str, str] = field(default_factory=dict)
     tool_prefix: str = "┊"
-    tool_emojis: Dict[str, str] = field(default_factory=dict)  # per-tool emoji overrides
-    banner_logo: str = ""    # Rich-markup ASCII art logo (replaces HERMES_AGENT_LOGO)
-    banner_hero: str = ""    # Rich-markup hero art (replaces HERMES_CADUCEUS)
+    tool_emojis: Dict[str, str] = field(
+        default_factory=dict
+    )  # per-tool emoji overrides
+    banner_logo: str = ""  # Rich-markup ASCII art logo (replaces HERMES_AGENT_LOGO)
+    banner_hero: str = ""  # Rich-markup hero art (replaces HERMES_CADUCEUS)
 
     def get_color(self, key: str, fallback: str = "") -> str:
         """Get a color value with fallback."""
@@ -153,34 +157,57 @@ class SkinConfig:
 # =============================================================================
 
 _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
-    "default": {
-        "name": "default",
-        "description": "Classic Hermes — gold and kawaii",
-        "colors": {
-            "banner_border": "#CD7F32",
-            "banner_title": "#FFD700",
-            "banner_accent": "#FFBF00",
-            "banner_dim": "#B8860B",
-            "banner_text": "#FFF8DC",
-            "ui_accent": "#FFBF00",
-            "ui_label": "#4dd0e1",
-            "ui_ok": "#4caf50",
-            "ui_error": "#ef5350",
-            "ui_warn": "#ffa726",
-            "prompt": "#FFF8DC",
-            "input_rule": "#CD7F32",
-            "response_border": "#FFD700",
-            "session_label": "#DAA520",
-            "session_border": "#8B8682",
+    'default': {
+        'name': 'default',
+        'description': '80s Hacker — CRT green on black, matrix vibes',
+        'colors': {
+            'banner_border': '#00FF00',
+            'banner_title': '#00FF00',
+            'banner_accent': '#00FF41',
+            'banner_dim': '#008F11',
+            'banner_text': '#00FF00',
+            'ui_accent': '#00FF41',
+            'ui_label': '#00FFFF',
+            'ui_ok': '#00FF00',
+            'ui_error': '#FF3333',
+            'ui_warn': '#FFB000',
+            'prompt': '#00FF00',
+            'input_rule': '#00FF00',
+            'response_border': '#00FF00',
+            'session_label': '#00FF41',
+            'session_border': '#004400',
         },
+        'spinner': {
+            'waiting_faces': ['[■]', '[▣]', '[▲]', '[◈]', '[▣]'],
+            'thinking_faces': ['[■]', '[▣]', '[▲]', '[◈]', '[▣]'],
+            'thinking_verbs': [
+                'decrypting', 'brute-forcing', 'tracing', 'bypassing',
+                'buffering', 'injection', 'proxying', 'spoofing',
+            ],
+            'wings': [
+                ['┌─', '─┐'],
+                ['├─', '─┤'],
+                ['╔═', '═╗'],
+            ],
+        },
+        'branding': {
+            'agent_name': 'Ov3rwatch',
+            'welcome': '> Ov3rwatch initialized. Type message or /help for commands.',
+            'goodbye': '> Connection terminated. GLHF! ⚔',
+            'response_label': ' ⚔ Ov3rwatch ',
+            'prompt_symbol': '> ',
+            'help_header': '[(o)] Available Commands',
+        },
+        'tool_prefix': '┃',
+    },
         "spinner": {
             # Empty = use hardcoded defaults in display.py
         },
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
+            "agent_name": "Ov3rwatch",
+            "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "response_label": " ⚔ Ov3rwatch ",
             "prompt_symbol": "❯ ",
             "help_header": "(^_^)? Available Commands",
         },
@@ -210,8 +237,14 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
             "waiting_faces": ["(⚔)", "(⛨)", "(▲)", "(<>)", "(/)"],
             "thinking_faces": ["(⚔)", "(⛨)", "(▲)", "(⌁)", "(<>)"],
             "thinking_verbs": [
-                "forging", "marching", "sizing the field", "holding the line",
-                "hammering plans", "tempering steel", "plotting impact", "raising the shield",
+                "forging",
+                "marching",
+                "sizing the field",
+                "holding the line",
+                "hammering plans",
+                "tempering steel",
+                "plotting impact",
+                "raising the shield",
             ],
             "wings": [
                 ["⟪⚔", "⚔⟫"],
@@ -272,10 +305,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
+            "agent_name": "Ov3rwatch",
+            "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "response_label": " ⚔ Ov3rwatch ",
             "prompt_symbol": "❯ ",
             "help_header": "[?] Available Commands",
         },
@@ -303,10 +336,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
+            "agent_name": "Ov3rwatch",
+            "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "response_label": " ⚔ Ov3rwatch ",
             "prompt_symbol": "❯ ",
             "help_header": "(^_^)? Available Commands",
         },
@@ -340,10 +373,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
+            "agent_name": "Ov3rwatch",
+            "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "response_label": " ⚔ Ov3rwatch ",
             "prompt_symbol": "❯ ",
             "help_header": "[?] Available Commands",
         },
@@ -377,8 +410,8 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
+            "agent_name": "Ov3rwatch",
+            "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! \u2695",
             "response_label": " \u2695 Hermes ",
             "prompt_symbol": "\u276f ",
@@ -410,9 +443,14 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
             "waiting_faces": ["(≈)", "(Ψ)", "(∿)", "(◌)", "(◠)"],
             "thinking_faces": ["(Ψ)", "(∿)", "(≈)", "(⌁)", "(◌)"],
             "thinking_verbs": [
-                "charting currents", "sounding the depth", "reading foam lines",
-                "steering the trident", "tracking undertow", "plotting sea lanes",
-                "calling the swell", "measuring pressure",
+                "charting currents",
+                "sounding the depth",
+                "reading foam lines",
+                "steering the trident",
+                "tracking undertow",
+                "plotting sea lanes",
+                "calling the swell",
+                "measuring pressure",
             ],
             "wings": [
                 ["⟪≈", "≈⟫"],
@@ -474,9 +512,14 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
             "waiting_faces": ["(◉)", "(◌)", "(◬)", "(⬤)", "(::)"],
             "thinking_faces": ["(◉)", "(◬)", "(◌)", "(○)", "(●)"],
             "thinking_verbs": [
-                "finding traction", "measuring the grade", "resetting the boulder",
-                "counting the ascent", "testing leverage", "setting the shoulder",
-                "pushing uphill", "enduring the loop",
+                "finding traction",
+                "measuring the grade",
+                "resetting the boulder",
+                "counting the ascent",
+                "testing leverage",
+                "setting the shoulder",
+                "pushing uphill",
+                "enduring the loop",
             ],
             "wings": [
                 ["⟪◉", "◉⟫"],
@@ -539,9 +582,14 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
             "waiting_faces": ["(✦)", "(▲)", "(◇)", "(<>)", "(🔥)"],
             "thinking_faces": ["(✦)", "(▲)", "(◇)", "(⌁)", "(🔥)"],
             "thinking_verbs": [
-                "banking into the draft", "measuring burn", "reading the updraft",
-                "tracking ember fall", "setting wing angle", "holding the flame core",
-                "plotting a hot landing", "coiling for lift",
+                "banking into the draft",
+                "measuring burn",
+                "reading the updraft",
+                "tracking ember fall",
+                "setting wing angle",
+                "holding the flame core",
+                "plotting a hot landing",
+                "coiling for lift",
             ],
             "wings": [
                 ["⟪✦", "✦⟫"],
@@ -599,6 +647,7 @@ def _load_skin_from_yaml(path: Path) -> Optional[Dict[str, Any]]:
     """Load a skin definition from a YAML file."""
     try:
         import yaml
+
         with open(path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
         if isinstance(data, dict) and "name" in data:
@@ -639,11 +688,13 @@ def list_skins() -> List[Dict[str, str]]:
     """
     result = []
     for name, data in _BUILTIN_SKINS.items():
-        result.append({
-            "name": name,
-            "description": data.get("description", ""),
-            "source": "builtin",
-        })
+        result.append(
+            {
+                "name": name,
+                "description": data.get("description", ""),
+                "source": "builtin",
+            }
+        )
 
     skins_path = _skins_dir()
     if skins_path.is_dir():
@@ -654,11 +705,13 @@ def list_skins() -> List[Dict[str, str]]:
                 # Skip if it shadows a built-in
                 if any(s["name"] == skin_name for s in result):
                     continue
-                result.append({
-                    "name": skin_name,
-                    "description": data.get("description", ""),
-                    "source": "user",
-                })
+                result.append(
+                    {
+                        "name": skin_name,
+                        "description": data.get("description", ""),
+                        "source": "user",
+                    }
+                )
 
     return result
 
@@ -729,7 +782,6 @@ def get_active_prompt_symbol(fallback: str = "❯ ") -> str:
         return fallback
 
 
-
 def get_active_help_header(fallback: str = "(^_^)? Available Commands") -> str:
     """Get the /help header from the active skin."""
     try:
@@ -738,14 +790,12 @@ def get_active_help_header(fallback: str = "(^_^)? Available Commands") -> str:
         return fallback
 
 
-
 def get_active_goodbye(fallback: str = "Goodbye! ⚕") -> str:
     """Get the goodbye line from the active skin."""
     try:
         return get_active_skin().get_branding("goodbye", fallback)
     except Exception:
         return fallback
-
 
 
 def get_prompt_toolkit_style_overrides() -> Dict[str, str]:
@@ -772,7 +822,9 @@ def get_prompt_toolkit_style_overrides() -> Dict[str, str]:
     menu_bg = skin.get_color("completion_menu_bg", "#1a1a2e")
     menu_current_bg = skin.get_color("completion_menu_current_bg", "#333355")
     menu_meta_bg = skin.get_color("completion_menu_meta_bg", menu_bg)
-    menu_meta_current_bg = skin.get_color("completion_menu_meta_current_bg", menu_current_bg)
+    menu_meta_current_bg = skin.get_color(
+        "completion_menu_meta_current_bg", menu_current_bg
+    )
 
     return {
         "input-area": prompt,
