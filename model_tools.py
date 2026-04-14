@@ -174,6 +174,7 @@ def _discover_tools():
         "tools.hexstrike_tool",
         "tools.orchestration_tool",
         "tools.agentseal_tool",
+        "tools.strix_tool",
     ]
     import importlib
 
