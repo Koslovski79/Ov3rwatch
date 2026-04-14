@@ -122,6 +122,10 @@ _HERMES_CORE_TOOLS = [
     "agent_delete",
     "agent_init_defaults",
     "agent_route_task",
+    # Available models
+    "list_available_models",
+    "get_models_by_capability",
+    "test_provider_connection",
 ]
 
 

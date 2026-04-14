@@ -170,6 +170,7 @@ def _discover_tools():
         "tools.model_routing_tool",
         "tools.approval_tool",
         "tools.agent_registry_tool",
+        "tools.available_models_tool",
     ]
     import importlib
 
