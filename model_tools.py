@@ -164,6 +164,11 @@ def _discover_tools():
         "tools.memory_recall_tool",
         "tools.wiki_memory_tool",
         "tools.qmd_search_tool",
+        "tools.caveman_tool",
+        "tools.session_jsonl_tool",
+        "tools.tool_descriptions",
+        "tools.model_routing_tool",
+        "tools.approval_tool",
     ]
     import importlib
 

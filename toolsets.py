@@ -97,6 +97,23 @@ _HERMES_CORE_TOOLS = [
     # Local search (qmd - optional, falls back to SQLite)
     "qmd_index",
     "qmd_search",
+    # Caveman compression (prose to dense)
+    "caveman_compress",
+    "caveman_stats",
+    "compress_file",
+    # Session JSONL deep search
+    "session_search_deep",
+    "session_list",
+    "session_load_context",
+    # Model routing
+    "route_model",
+    "list_routing_rules",
+    # Enhanced approval
+    "approval_check",
+    "approval_add_allowlist",
+    "approval_add_denylist",
+    "approval_list_rules",
+    "approval_clear_denylist",
 ]
 
 
