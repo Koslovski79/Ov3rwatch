@@ -8,5 +8,12 @@ export OVR_HOME="$(pwd)"
 # Create config dir if missing
 mkdir -p "$HERMES_HOME"
 
+# Use venv if exists, otherwise fall back to system python
+if [ -d "venv" ]; then
+    VENV_PYTHON="./venv/bin/python"
+else
+    VENV_PYTHON="python3"
+fi
+
 # Run Ov3rwatch
-python cli.py "$@"
+$VENV_PYTHON cli.py "$@"
