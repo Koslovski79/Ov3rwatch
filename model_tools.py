@@ -171,6 +171,7 @@ def _discover_tools():
         "tools.approval_tool",
         "tools.agent_registry_tool",
         "tools.available_models_tool",
+        "tools.hexstrike_tool",
     ]
     import importlib
 

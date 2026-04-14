@@ -16,6 +16,7 @@ async function switchPanel(name) {
   if (name === 'workspaces') await loadWorkspacesPanel();
   if (name === 'profiles') await loadProfilesPanel();
   if (name === 'todos') loadTodos();
+  if (name === 'agents') await loadAgents();
 }
 
 // ── Cron panel ──
@@ -1441,3 +1442,147 @@ function dismissErrorBanner(){
 }
 
 // Event wiring
+
+// ── Ov3rwatch Agents panel ──────────────────────────────────────────────────────
+let _agentsData = null;
+let _modelsData = null;
+
+async function loadAgents() {
+  const box = $('agentList');
+  if (_agentsData) return; // Already loaded
+  
+  try {
+    // Load agents and models in parallel
+    const [agentsResp, modelsResp] = await Promise.all([
+      api('/api/ov3rwatch/agents'),
+      api('/api/ov3rwatch/models')
+    ]);
+    
+    _agentsData = agentsResp.agents || [];
+    _modelsData = modelsResp.providers || {};
+    
+    // Populate model dropdown
+    const modelSelect = $('agentFormModel');
+    if (modelSelect) {
+      modelSelect.innerHTML = '<option value="">Select model...</option>';
+      
+      // Add OpenRouter models
+      const orModels = _modelsData.openrouter || [];
+      if (orModels.length > 0) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = 'OpenRouter';
+        orModels.slice(0, 20).forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m.id;
+          opt.textContent = m.name || m.id;
+          optgroup.appendChild(opt);
+        });
+        modelSelect.appendChild(optgroup);
+      }
+      
+      // Add Ollama models
+      const ollamaModels = _modelsData.ollama || [];
+      if (ollamaModels.length > 0) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = 'Ollama';
+        ollamaModels.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = 'ollama:' + m.id;
+          opt.textContent = m.name || m.id;
+          optgroup.appendChild(opt);
+        });
+        modelSelect.appendChild(optgroup);
+      }
+    }
+    
+    renderAgents();
+  } catch (e) {
+    box.innerHTML = '<div style="padding:16px;color:var(--muted);font-size:12px">Failed to load agents: ' + esc(e) + '</div>';
+  }
+}
+
+function renderAgents() {
+  const box = $('agentList');
+  if (!_agentsData || !_agentsData.length) {
+    box.innerHTML = '<div style="padding:16px;color:var(--muted);font-size:12px">No agents configured. Click "New Agent" to create one.</div>';
+    return;
+  }
+  
+  box.innerHTML = '';
+  _agentsData.forEach(agent => {
+    const item = document.createElement('div');
+    item.className = 'agent-item';
+    item.style.cssText = 'padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer';
+    item.onclick = () => showAgentDetail(agent.agent_id);
+    
+    const emoji = agent.emoji || '🤖';
+    const color = agent.color || '#00FF00';
+    
+    item.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:20px">${emoji}</span>
+        <div style="flex:1">
+          <div style="font-size:13px;color:var(--text);font-weight:500">${esc(agent.name)}</div>
+          <div style="font-size:10px;color:var(--muted)">${esc(agent.model || 'No model')}</div>
+        </div>
+        <div style="width:8px;height:8px;border-radius:50%;background:${color}"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">${esc(agent.description || '')}</div>
+    `;
+    box.appendChild(item);
+  });
+}
+
+function toggleAgentForm() {
+  const form = $('agentCreateForm');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+async function createAgent() {
+  const agentId = $('agentFormId').value.trim();
+  const name = $('agentFormName').value.trim();
+  const model = $('agentFormModel').value;
+  const emoji = $('agentFormEmoji').value || '🤖';
+  const color = $('agentFormColor').value || '#00FF00';
+  
+  if (!agentId || !name) {
+    alert('Agent ID and Name are required');
+    return;
+  }
+  
+  try {
+    await api('/api/ov3rwatch/agents/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        agent_id: agentId,
+        name: name,
+        model: model || 'anthropic/claude-sonnet-4-5',
+        provider: 'anthropic',
+        emoji: emoji,
+        color: color,
+        description: 'Custom agent'
+      })
+    });
+    
+    // Reload agents
+    _agentsData = null;
+    await loadAgents();
+    
+    // Reset form
+    $('agentFormId').value = '';
+    $('agentFormName').value = '';
+    $('agentFormModel').value = '';
+    toggleAgentForm();
+  } catch (e) {
+    alert('Failed to create agent: ' + e);
+  }
+}
+
+async function showAgentDetail(agentId) {
+  try {
+    const agent = await api('/api/ov3rwatch/agents/' + agentId);
+    alert('Agent: ' + agent.name + '\nModel: ' + agent.model + '\nProvider: ' + agent.provider + '\n\nDescription: ' + (agent.description || 'None'));
+  } catch (e) {
+    alert('Failed to load agent: ' + e);
+  }
+}

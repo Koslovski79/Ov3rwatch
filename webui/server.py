@@ -15,10 +15,29 @@ import traceback
 if not os.getenv("HERMES_HOME"):
     os.environ["HERMES_HOME"] = os.path.expanduser("~/.hermes")
 
-# Add Ov3rwatch to path for agent tools
+# Add Ov3rwatch to path for agent tools - BEFORE any other imports
 OV3RWATCH_PATH = "/home/z3r0darkth1rty/Ov3rwatch"
 if os.path.exists(OV3RWATCH_PATH) and OV3RWATCH_PATH not in sys.path:
     sys.path.insert(0, OV3RWATCH_PATH)
+
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlparse
+import logging as _logger_module
+
+logger = _logger_module.getLogger(__name__)
+
+# Preload Ov3rwatch integration before config imports hermes-agent (to avoid hermes-agent load)
+if OV3RWATCH_PATH in sys.path:
+    try:
+        import importlib
+
+        ov3rwatch_integration = importlib.import_module("api.ov3rwatch_integration")
+        logger.info(f"Ov3rwatch integration preloaded from: {OV3RWATCH_PATH}")
+    except Exception as e:
+        logger.warning(f"Ov3rwatch preload skipped: {e}")
+        logger.info(f"Ov3rwatch integration preloaded from: {OV3RWATCH_PATH}")
+    except Exception as e:
+        pass
 
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
