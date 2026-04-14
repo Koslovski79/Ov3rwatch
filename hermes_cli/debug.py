@@ -1,4 +1,4 @@
-"""``hermes debug`` — debug tools for Hermes Agent.
+"""``hermes debug`` — debug tools for Ov3rwatch Agent.
 
 Currently supports:
     hermes debug share    Upload debug report (system info + logs) to a
@@ -53,7 +53,7 @@ def _upload_dpaste_com(content: str, expiry_days: int = 7) -> str:
 
     dpaste.com uses multipart form data.
     """
-    boundary = "----HermesDebugBoundary9f3c"
+    boundary = "----Ov3rwatchDebugBoundary9f3c"
 
     def _field(name: str, value: str) -> str:
         return (
@@ -315,7 +315,7 @@ def run_debug_share(args):
     if failures:
         print(f"\n  (failed to upload: {', '.join(failures)})")
 
-    print(f"\nShare these links with the Hermes team for support.")
+    print(f"\nShare these links with the Ov3rwatch team for support.")
 
 
 def run_debug(args):

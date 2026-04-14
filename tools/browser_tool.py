@@ -864,7 +864,7 @@ def _find_agent_browser() -> str:
     """
     Find the agent-browser CLI executable.
     
-    Checks in order: current PATH, Homebrew/common bin dirs, Hermes-managed
+    Checks in order: current PATH, Homebrew/common bin dirs, Ov3rwatch-managed
     node, local node_modules/.bin/, npx fallback.
     
     Returns:
@@ -895,7 +895,7 @@ def _find_agent_browser() -> str:
         _agent_browser_resolved = True
         return which_result
 
-    # Build an extended search PATH including Homebrew and Hermes-managed dirs.
+    # Build an extended search PATH including Homebrew and Ov3rwatch-managed dirs.
     # This covers macOS where the process PATH may not include Homebrew paths.
     extra_dirs: list[str] = []
     for d in ["/opt/homebrew/bin", "/usr/local/bin"]:
@@ -1046,7 +1046,7 @@ def _run_browser_command(
         
         browser_env = {**os.environ}
 
-        # Ensure PATH includes Hermes-managed Node first, Homebrew versioned
+        # Ensure PATH includes Ov3rwatch-managed Node first, Homebrew versioned
         # node dirs (for macOS ``brew install node@24``), then standard system dirs.
         hermes_home = get_hermes_home()
         hermes_node_bin = str(hermes_home / "node" / "bin")

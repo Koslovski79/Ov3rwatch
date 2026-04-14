@@ -1,4 +1,4 @@
-"""Hermes Web UI -- first-run onboarding helpers."""
+"""Ov3rwatch Web UI -- first-run onboarding helpers."""
 
 from __future__ import annotations
 
@@ -133,7 +133,7 @@ def _save_yaml_config(config_path: Path, config: dict) -> None:
     try:
         import yaml as _yaml
     except ImportError as exc:
-        raise RuntimeError("PyYAML is required to write Hermes config.yaml") from exc
+        raise RuntimeError("PyYAML is required to write Ov3rwatch config.yaml") from exc
 
     config_path.parent.mkdir(parents=True, exist_ok=True)
     config_path.write_text(
@@ -300,20 +300,20 @@ def _status_from_runtime(cfg: dict, imports_ok: bool) -> dict:
     if not _HERMES_FOUND or not imports_ok:
         state = "agent_unavailable"
         note = (
-            "Hermes is not fully importable from the Web UI yet. Finish bootstrap or fix the "
+            "Ov3rwatch is not fully importable from the Web UI yet. Finish bootstrap or fix the "
             "agent install before provider setup will work."
         )
     elif chat_ready:
         state = "ready"
         provider_name = _PROVIDER_DISPLAY.get(
-            provider, provider.title() if provider else "Hermes"
+            provider, provider.title() if provider else "Ov3rwatch"
         )
-        note = f"Hermes is minimally configured and ready to chat via {provider_name}."
+        note = f"Ov3rwatch is minimally configured and ready to chat via {provider_name}."
     elif provider_configured:
         state = "provider_incomplete"
         if provider == "custom" and not base_url:
             note = (
-                "Hermes has a saved provider/model selection but still needs the "
+                "Ov3rwatch has a saved provider/model selection but still needs the "
                 "base URL and API key required to chat."
             )
         elif provider not in _SUPPORTED_PROVIDER_SETUPS:
@@ -325,12 +325,12 @@ def _status_from_runtime(cfg: dict, imports_ok: bool) -> dict:
             )
         else:
             note = (
-                "Hermes has a saved provider/model selection but still needs the "
+                "Ov3rwatch has a saved provider/model selection but still needs the "
                 "API key required to chat."
             )
     else:
         state = "needs_provider"
-        note = "Hermes is installed, but you still need to choose a provider and save working credentials."
+        note = "Ov3rwatch is installed, but you still need to choose a provider and save working credentials."
 
     return {
         "provider_configured": provider_configured,
@@ -411,7 +411,7 @@ def get_onboarding_status() -> dict:
             "default_workspace": settings.get("default_workspace")
             or str(DEFAULT_WORKSPACE),
             "password_enabled": is_auth_enabled(),
-            "bot_name": settings.get("bot_name") or "Hermes",
+            "bot_name": settings.get("bot_name") or "Ov3rwatch",
         },
         "system": {
             "hermes_found": bool(_HERMES_FOUND),

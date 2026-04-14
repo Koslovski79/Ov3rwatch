@@ -1,5 +1,5 @@
 """
-Hermes Web UI -- SSE streaming engine and agent thread runner.
+Ov3rwatch Web UI -- SSE streaming engine and agent thread runner.
 Includes Sprint 10 cancel support via CANCEL_FLAGS.
 """
 import json
@@ -250,7 +250,7 @@ def _run_agent_streaming(session_id, msg_text, model, workspace, stream_id, atta
                 print(f"[webui] WARNING: SessionDB init failed — session_search will be unavailable: {_db_err}", flush=True)
             resolved_model, resolved_provider, resolved_base_url = resolve_model_provider(model)
 
-            # Resolve API key via Hermes runtime provider (matches gateway behaviour).
+            # Resolve API key via Ov3rwatch runtime provider (matches gateway behaviour).
             # Pass the resolved provider so non-default providers get their own credentials.
             resolved_api_key = None
             try:

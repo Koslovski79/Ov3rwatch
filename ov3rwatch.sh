@@ -1,6 +1,6 @@
 #!/bin/bash
-# Ov3rwatch startup script - sets up isolated environment from Hermes
-# Run this instead of python cli.py to ensure separation from Hermes
+# Ov3rwatch startup script - sets up isolated environment from Ov3rwatch
+# Run this instead of python cli.py to ensure separation from Ov3rwatch
 
 export HERMES_HOME="$HOME/.ov3rwatch"
 export OVR_HOME="$(pwd)"

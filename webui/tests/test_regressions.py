@@ -580,7 +580,7 @@ def test_loadSession_inflight_sets_busy_before_renderMessages(cleanup_test_sessi
 
 
 def test_streaming_bridge_accepts_current_tool_progress_callback_signature(cleanup_test_sessions):
-    """R17: api/streaming.py must accept the current Hermes agent callback contract.
+    """R17: api/streaming.py must accept the current Ov3rwatch agent callback contract.
     The agent now calls tool_progress_callback(event_type, name, preview, args, **kwargs).
     If the WebUI bridge only accepts (name, preview, args), live tool updates silently vanish.
     """

@@ -1,4 +1,4 @@
-"""Hermes CLI skin/theme engine.
+"""Ov3rwatch CLI skin/theme engine.
 
 A data-driven skin system that lets users customize the CLI's visual appearance.
 Skins are defined as YAML files in ~/.hermes/skins/ or as built-in presets.
@@ -89,7 +89,7 @@ USAGE
 BUILT-IN SKINS
 ==============
 
-- ``default`` — Classic Hermes gold/kawaii (the current look)
+- ``default`` — Classic Ov3rwatch gold/kawaii (the current look)
 - ``ares``    — Crimson/bronze war-god theme with custom spinner wings
 - ``mono``    — Clean grayscale monochrome
 - ``slate``   — Cool blue developer-focused theme
@@ -413,7 +413,7 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
             "agent_name": "Ov3rwatch",
             "welcome": "Welcome to Ov3rwatch! Type your message or /help for commands.",
             "goodbye": "Goodbye! \u2695",
-            "response_label": " \u2695 Hermes ",
+            "response_label": " \u2695 Ov3rwatch ",
             "prompt_symbol": "\u276f ",
             "help_header": "(^_^)? Available Commands",
         },

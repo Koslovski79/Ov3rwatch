@@ -1,7 +1,7 @@
 """
 Weixin platform adapter.
 
-Connects Hermes Agent to WeChat personal accounts via Tencent's iLink Bot API.
+Connects Ov3rwatch Agent to WeChat personal accounts via Tencent's iLink Bot API.
 
 Design notes:
 - Long-poll ``getupdates`` drives inbound delivery.
@@ -1044,7 +1044,7 @@ async def qr_login(
 
 
 class WeixinAdapter(BasePlatformAdapter):
-    """Native Hermes adapter for Weixin personal accounts."""
+    """Native Ov3rwatch adapter for Weixin personal accounts."""
 
     MAX_MESSAGE_LENGTH = 4000
 

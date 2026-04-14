@@ -1,8 +1,8 @@
 ---
 name: honcho
-description: Configure and use Honcho memory with Hermes -- cross-session user modeling, multi-profile peer isolation, observation config, and dialectic reasoning. Use when setting up Honcho, troubleshooting memory, managing profiles with Honcho peers, or tuning observation and recall settings.
+description: Configure and use Honcho memory with Ov3rwatch -- cross-session user modeling, multi-profile peer isolation, observation config, and dialectic reasoning. Use when setting up Honcho, troubleshooting memory, managing profiles with Honcho peers, or tuning observation and recall settings.
 version: 1.0.0
-author: Hermes Agent
+author: Ov3rwatch Agent
 license: MIT
 metadata:
   hermes:
@@ -13,9 +13,9 @@ prerequisites:
   pip: [honcho-ai]
 ---
 
-# Honcho Memory for Hermes
+# Honcho Memory for Ov3rwatch
 
-Honcho provides AI-native cross-session user modeling. It learns who the user is across conversations and gives every Hermes profile its own peer identity while sharing a unified view of the user.
+Honcho provides AI-native cross-session user modeling. It learns who the user is across conversations and gives every Ov3rwatch profile its own peer identity while sharing a unified view of the user.
 
 ## When to Use
 
@@ -53,10 +53,10 @@ hermes honcho status    # shows resolved config, connection test, peer info
 
 ### Peers
 
-Honcho models conversations as interactions between **peers**. Hermes creates two peers per session:
+Honcho models conversations as interactions between **peers**. Ov3rwatch creates two peers per session:
 
 - **User peer** (`peerName`): represents the human. Honcho builds a user representation from observed messages.
-- **AI peer** (`aiPeer`): represents this Hermes instance. Each profile gets its own AI peer so agents develop independent views.
+- **AI peer** (`aiPeer`): represents this Ov3rwatch instance. Each profile gets its own AI peer so agents develop independent views.
 
 ### Observation
 
@@ -97,7 +97,7 @@ Honcho sessions scope where messages and observations land. Strategy options:
 |----------|----------|
 | `per-directory` (default) | One session per working directory |
 | `per-repo` | One session per git repository root |
-| `per-session` | New Honcho session each Hermes run |
+| `per-session` | New Honcho session each Ov3rwatch run |
 | `global` | Single session across all directories |
 
 Manual override: `hermes honcho map my-project-name`
@@ -114,7 +114,7 @@ How the agent accesses Honcho memory:
 
 ## Multi-Profile Setup
 
-Each Hermes profile gets its own Honcho AI peer while sharing the same workspace (user context). This means:
+Each Ov3rwatch profile gets its own Honcho AI peer while sharing the same workspace (user context). This means:
 
 - All profiles see the same user representation
 - Each profile builds its own AI identity and observations
@@ -236,8 +236,8 @@ Messages over `messageMaxChars` (default 25k) are automatically chunked with `[c
 | `hermes honcho sessions` | List known directory-to-session-name mappings |
 | `hermes honcho map <name>` | Map current working directory to a Honcho session name |
 | `hermes honcho identity` | Seed AI peer identity or show both peer representations |
-| `hermes honcho sync` | Create host blocks for all Hermes profiles that don't have one yet |
-| `hermes honcho migrate` | Step-by-step migration guide from OpenClaw native memory to Hermes + Honcho |
+| `hermes honcho sync` | Create host blocks for all Ov3rwatch profiles that don't have one yet |
+| `hermes honcho migrate` | Step-by-step migration guide from OpenClaw native memory to Ov3rwatch + Honcho |
 | `hermes memory setup` | Generic memory provider picker (selecting "honcho" runs the same wizard) |
 | `hermes memory status` | Show active memory provider and config |
 | `hermes memory off` | Disable external memory provider |

@@ -28,7 +28,7 @@ google_api.py  →  gws_bridge.py  →  gws CLI
 ```
 
 - `setup.py` handles OAuth2 (headless-compatible, works on CLI/Telegram/Discord)
-- `gws_bridge.py` refreshes the Hermes token and injects it into `gws` via `GOOGLE_WORKSPACE_CLI_TOKEN`
+- `gws_bridge.py` refreshes the Ov3rwatch token and injects it into `gws` via `GOOGLE_WORKSPACE_CLI_TOKEN`
 - `google_api.py` provides the same CLI interface as v1 but delegates to `gws`
 
 ## References

@@ -102,7 +102,7 @@ Task {
     
     # Context
     parent_task_id: FK -> Task  # For sub-tasks
-    session_id: str           # Hermes session ID
+    session_id: str           # Ov3rwatch session ID
 }
 ```
 

@@ -1,5 +1,5 @@
 """
-Hermes CLI - Unified command-line interface for Ov3rwatch.
+Ov3rwatch CLI - Unified command-line interface for Ov3rwatch.
 
 Provides subcommands for:
 - hermes chat          - Interactive chat (same as ./hermes)

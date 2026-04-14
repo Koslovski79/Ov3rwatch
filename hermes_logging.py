@@ -1,4 +1,4 @@
-"""Centralized logging setup for Hermes Agent.
+"""Centralized logging setup for Ov3rwatch Agent.
 
 Provides a single ``setup_logging()`` entry point that both the CLI and
 gateway call early in their startup path.  All log files live under
@@ -158,7 +158,7 @@ def setup_logging(
     mode: Optional[str] = None,
     force: bool = False,
 ) -> Path:
-    """Configure the Hermes logging subsystem.
+    """Configure the Ov3rwatch logging subsystem.
 
     Safe to call multiple times — the second call is a no-op unless
     *force* is ``True``.
@@ -166,7 +166,7 @@ def setup_logging(
     Parameters
     ----------
     hermes_home
-        Override for the Hermes home directory.  Falls back to
+        Override for the Ov3rwatch home directory.  Falls back to
         ``get_hermes_home()`` (profile-aware).
     log_level
         Minimum level for the ``agent.log`` file handler.  Accepts any

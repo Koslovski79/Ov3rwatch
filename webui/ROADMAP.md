@@ -1,6 +1,6 @@
-# Hermes Web UI: Full Parity Roadmap
+# Ov3rwatch Web UI: Full Parity Roadmap
 
-> Goal: Full 1:1 parity with the Hermes CLI experience via a clean dark web UI.
+> Goal: Full 1:1 parity with the Ov3rwatch CLI experience via a clean dark web UI.
 > Everything you can do from the CLI terminal, you can do from this UI.
 >
 > Last updated: v0.50.21 (April 13, 2026) — 961 tests, 961 passing
@@ -29,7 +29,7 @@
 | Sprint 10 | Server health + operational polish | server.py split into api/ modules, background task cancel, cron run history viewer, tool card UX polish | 167 |
 | Sprint 10 fixes | Import regressions + regression tests | uuid, AIAgent, has_pending, SSE cancel loop, Session.__init__ tool_calls; test_regressions.py | 177 |
 | Concurrency sweeps | Multi-session correctness | Approval cross-session (R10), activity bar per-session (R11), live cards on switch-back (R12), tool cards after done (R13), session model authoritative (R14), newSession cards (R15) | 190 |
-| Sprint 11 | Multi-provider models + streaming | Dynamic model dropdown (any Hermes provider), smooth scroll pinning, routes extracted to api/routes.py (server.py 704→76 lines) | 201 |
+| Sprint 11 | Multi-provider models + streaming | Dynamic model dropdown (any Ov3rwatch provider), smooth scroll pinning, routes extracted to api/routes.py (server.py 704→76 lines) | 201 |
 | Sprint 12 | Settings + reliability + session QoL | Settings panel (gear icon, settings.json), SSE auto-reconnect, pin sessions, import session from JSON | 211 |
 | Sprint 13 | Alerts + polish | Cron completion alerts (polling + badge), background error banner, session duplicate, browser tab title | 221 |
 | Sprint 14 | Visual polish + workspace ops | Mermaid diagrams, message timestamps, file rename, folder create, session tags, session archive | 233 |
@@ -67,7 +67,7 @@
 | v0.47–v0.47.1 | Dialogs + session menu + skills + mobile QA + Spanish | Shared app dialogs, session ⋯ menu, /skills command, mobile QA suite, Android Chrome fixes, Spanish locale (@gabogabucho) | 648 |
 | v0.48–v0.48.2 | Gateway session sync + table formatting + provider warnings | Real-time Telegram/Discord/Slack sessions in sidebar (@bergeouss), inlineMd() in table cells, provider/model mismatch toast | 679 |
 | v0.49–v0.49.1 | Onboarding wizard + Docker two-container | One-shot bootstrap + guided setup wizard, OpenRouter/Anthropic/OpenAI/Custom provider config, two-container Docker compose, mobile Profiles button | 700 |
-| v0.50.0 | v0.50.0 UI overhaul (Sprint 34) | Composer-centric controls, Hermes Control Center modal, workspace panel state machine, collapsible date groups, rAF streaming throttle, context ring indicator (@aronprins) | 742 |
+| v0.50.0 | v0.50.0 UI overhaul (Sprint 34) | Composer-centric controls, Ov3rwatch Control Center modal, workspace panel state machine, collapsible date groups, rAF streaming throttle, context ring indicator (@aronprins) | 742 |
 | v0.50.5–v0.50.10 | Think-tag edge cases + onboarding hardening + mobile fixes | MiniMax M2.5 leading-whitespace think-tag fix, skip-onboarding env var, OAuth provider path, Docker bridge networks fix, model dropdown dedup, title auto-generation fix, mobile close button | 802 |
 | v0.50.11–v0.50.12 | Chat table styles + URL autolink + profile env isolation | .msg-body table borders, plain URL auto-linking, profile .env secret isolation on switch (prevents API key leakage across profiles, @Hinotoi-agent) | 815 |
 | v0.50.13–v0.50.15 | session_search + security sweep + KaTeX math | SessionDB injection for session_search in WebUI (@DelightRun), bandit B310/B324/B110 + QuietHTTPServer (@lawrencel1ng), KaTeX math rendering with fence-before-math fix | 871 |
@@ -99,7 +99,7 @@
 - [x] Send messages, get SSE-streaming responses
 - [x] Switch models per session (10 models, grouped by provider)
 - [x] Composer-scoped model picker in footer (moved from sidebar to align with per-conversation model selection)
-- [x] Multi-provider API support: use any Hermes agent API provider (OpenAI, Anthropic, Google, etc.) directly, not just OpenRouter (Sprint 11)
+- [x] Multi-provider API support: use any Ov3rwatch agent API provider (OpenAI, Anthropic, Google, etc.) directly, not just OpenRouter (Sprint 11)
 - [x] Custom endpoint model discovery: auto-detect models from Ollama, LM Studio, and other local LLM servers via base_url (PR #18)
 - [x] Upload files to workspace (drag-drop, click, clipboard paste)
 - [x] File tray with remove button

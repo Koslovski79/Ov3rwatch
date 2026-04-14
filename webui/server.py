@@ -1,5 +1,5 @@
 """
-Hermes Web UI -- Main server entry point.
+Ov3rwatch Web UI -- Main server entry point.
 Thin routing shell: imports Handler, delegates to api/routes.py, runs server.
 All business logic lives in api/*.
 """
@@ -77,7 +77,7 @@ class Handler(BaseHTTPRequestHandler):
     timeout = (
         30  # seconds — kills idle/incomplete connections to prevent thread exhaustion
     )
-    server_version = "HermesWebUI/0.2"
+    server_version = "Ov3rwatchWebUI/0.2"
 
     def log_message(self, fmt, *args):
         pass  # suppress default Apache-style log
@@ -185,7 +185,7 @@ def main() -> None:
     ok, missing, errors = verify_hermes_imports()
     if not ok and _HERMES_FOUND:
         print(
-            f"[!!] Warning: Hermes agent found but missing modules: {missing}",
+            f"[!!] Warning: Ov3rwatch agent found but missing modules: {missing}",
             flush=True,
         )
         for mod, err in errors.items():
@@ -238,7 +238,7 @@ def main() -> None:
             )
             scheme = "http"
 
-    print(f"  Hermes Web UI listening on {scheme}://{HOST}:{PORT}", flush=True)
+    print(f"  Ov3rwatch Web UI listening on {scheme}://{HOST}:{PORT}", flush=True)
     if HOST == "127.0.0.1" or within_container:
         print(
             f"  Remote access: ssh -N -L {PORT}:127.0.0.1:{PORT} <user>@<your-server>",

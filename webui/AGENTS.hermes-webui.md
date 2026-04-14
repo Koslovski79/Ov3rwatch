@@ -5,7 +5,7 @@ Symlink (for imports): <agent-dir>/webui-mvp -> <repo>
 Runtime state: ~/.hermes/webui-mvp/sessions/
 
 Purpose:
-- Claude-style web UI for Hermes. Chat, workspace file browser, cron/skills/memory viewers.
+- Claude-style web UI for Ov3rwatch. Chat, workspace file browser, cron/skills/memory viewers.
 
 Start server:
   cd <agent-dir>

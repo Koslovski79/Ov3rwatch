@@ -1,4 +1,4 @@
-# Hermes Web UI -- Changelog
+# Ov3rwatch Web UI -- Changelog
 
 ## [v0.50.36] fix: workspace list cleaner — allow own-profile paths, remove brittle string filter
 
@@ -321,7 +321,7 @@ The hardcoded lists in `_PROVIDER_MODELS` remain as credential-missing / network
 
 ## [v0.50.3] Onboarding completes gracefully for pre-configured providers (PR #323, fixes #322)
 
-- **OAuth/CLI-configured providers no longer blocked by onboarding** (closes #322): Users with providers already set up via the CLI (`openai-codex`, `copilot`, `nous`, etc.) hit `Unsupported provider for WebUI onboarding` when clicking "Open Hermes" on the finish page. The wizard now marks onboarding complete and lets them through — the agent setup is already done, no wizard steps needed.
+- **OAuth/CLI-configured providers no longer blocked by onboarding** (closes #322): Users with providers already set up via the CLI (`openai-codex`, `copilot`, `nous`, etc.) hit `Unsupported provider for WebUI onboarding` when clicking "Open Ov3rwatch" on the finish page. The wizard now marks onboarding complete and lets them through — the agent setup is already done, no wizard steps needed.
   - 5 new tests in `tests/test_sprint34.py`; 758 tests total (up from 753)
 
 ## [v0.50.2] Workspace panel state persists across refreshes
@@ -337,12 +337,12 @@ The hardcoded lists in `_PROVIDER_MODELS` remain as credential-missing / network
   - Users who explicitly set send key to `enter` on mobile can override in Settings.
   - 4 new tests in `tests/test_mobile_layout.py`; 746 tests total (up from 742)
 
-## [v0.50.0] Composer-centric UI refresh + Hermes Control Center (PR #242)
+## [v0.50.0] Composer-centric UI refresh + Ov3rwatch Control Center (PR #242)
 
 Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the biggest single contribution to the project. Rebased and reviewed on `pr-242-review`.
 
 - **Composer as control hub** — model selector, profile chip, and workspace chip now live in the composer footer as pill buttons with dropdowns. The context window usage ring (token count, cost, fill) replaces the old linear pill.
-- **Hermes Control Center** — a single sidebar launcher button (bottom of sidebar) replaces the gear icon settings modal. Tabbed 860px modal: Conversation tab (transcript/JSON export, import, clear), Preferences tab (all settings), System tab (version, password). Always resets to Conversation on close.
+- **Ov3rwatch Control Center** — a single sidebar launcher button (bottom of sidebar) replaces the gear icon settings modal. Tabbed 860px modal: Conversation tab (transcript/JSON export, import, clear), Preferences tab (all settings), System tab (version, password). Always resets to Conversation on close.
 - **Activity bar removed** — turn-scoped status (thinking, cancelling) renders inline in the composer footer via `setComposerStatus`.
 - **Session `⋯` dropdown** — per-row pin/archive/duplicate/move/delete actions move from inline buttons into a shared dropdown menu; click-outside/scroll/Escape handling.
 - **Workspace panel state machine** — `_workspacePanelMode` (`closed`/`browse`/`preview`) in boot.js with proper transitions and discard-unsaved guard.
@@ -376,7 +376,7 @@ Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the bigg
 
 ## [v0.49.1] Docker docs + mobile Profiles button (PRs #291, #265)
 
-- **Two-container Docker setup** (PR #291 / closes #288): New `docker-compose.two-container.yml` for running the Hermes Agent and WebUI as separate containers with shared volumes. Documents the architecture clearly; localhost-only port binding by default.
+- **Two-container Docker setup** (PR #291 / closes #288): New `docker-compose.two-container.yml` for running the Ov3rwatch Agent and WebUI as separate containers with shared volumes. Documents the architecture clearly; localhost-only port binding by default.
 - **Mobile Profiles button** (PR #265 by **[@Bobby9228](https://github.com/Bobby9228)**): Adds Profiles to the mobile bottom navigation bar (last position: Chat → Tasks → Skills → Memory → Spaces → Profiles). Uses `mobileSwitchPanel()` for correct active-highlight behaviour; `data-panel="profiles"` attribute set; SVG matches other nav icons; 3 new tests.
   - 700 tests total (up from 697)
 
@@ -404,7 +404,7 @@ Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the bigg
 
 ## [v0.48.2] Provider/model mismatch warning (PR #283, fixes #266)
 
-- **Provider mismatch warning** (PR #283): WebUI now warns when you select a model from a provider different from the one Hermes is configured for, instead of silently failing with a 401 error.
+- **Provider mismatch warning** (PR #283): WebUI now warns when you select a model from a provider different from the one Ov3rwatch is configured for, instead of silently failing with a 401 error.
   - `api/streaming.py`: 401/auth errors classified as `type='auth_mismatch'` with an actionable hint ("Run `hermes model` in your terminal to switch providers")
   - `static/ui.js`: `populateModelDropdown()` stores `active_provider` from `/api/models` as `window._activeProvider`; new `_checkProviderMismatch()` helper compares selected model's provider prefix against the configured provider
   - `static/boot.js`: `modelSelect.onchange` calls `_checkProviderMismatch()` and shows a toast warning immediately on selection
@@ -698,7 +698,7 @@ Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the bigg
 ## [v0.38.3] — 2026-04-06
 
 ### Fixed
-- **Model dropdown shows only configured providers** (#155): Provider detection now uses `hermes_cli.models.list_available_providers()` — the same auth check the Hermes agent uses at runtime — instead of scanning raw API key env vars. The dropdown now reflects exactly what the user has configured (auth.json, credential pools, OAuth flows like Copilot). When no providers are detected, shows only the configured default model rather than a full generic list. Added `copilot` and `gemini` to the curated model lists. Falls back to env var scanning for standalone installs without hermes-agent.
+- **Model dropdown shows only configured providers** (#155): Provider detection now uses `hermes_cli.models.list_available_providers()` — the same auth check the Ov3rwatch agent uses at runtime — instead of scanning raw API key env vars. The dropdown now reflects exactly what the user has configured (auth.json, credential pools, OAuth flows like Copilot). When no providers are detected, shows only the configured default model rather than a full generic list. Added `copilot` and `gemini` to the curated model lists. Falls back to env var scanning for standalone installs without hermes-agent.
 
 ---
 
@@ -745,7 +745,7 @@ Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the bigg
 - **Configurable bot name.** New "Assistant Name" field in Settings panel.
   Display name updates throughout the UI: sidebar, topbar, message roles,
   login page, browser tab title, and composer placeholder. Defaults to
-  "Hermes". Configurable via settings or `HERMES_WEBUI_BOT_NAME` env var.
+  "Ov3rwatch". Configurable via settings or `HERMES_WEBUI_BOT_NAME` env var.
   Server-side sanitization prevents empty names and escapes HTML for the
   login page. (PR #135, based on #131 by @TaraTheStar)
 
@@ -891,7 +891,7 @@ Major UI overhaul by **[@aronprins](https://github.com/aronprins)** — the bigg
 - **Opt-in `/insights` sync.** New "Sync usage to /insights" setting (default: off). When enabled, after each turn the WebUI mirrors session token usage, cost, model, and title into `state.db` so `hermes /insights` includes browser session activity. (#92, #93)
 
 ### Bug Fixes
-- **state_sync.py correctness fixes.** Three bugs in the initial implementation caught during code review: wrong class name (`HermesState` → `SessionDB`), wrong constructor argument type (`str` → `Path`), wrong title update method (`_execute_write` with bad signature → `set_session_title`). Also fixed a SQLite connection leak (persistent connection opened per call, never closed). (#95)
+- **state_sync.py correctness fixes.** Three bugs in the initial implementation caught during code review: wrong class name (`Ov3rwatchState` → `SessionDB`), wrong constructor argument type (`str` → `Path`), wrong title update method (`_execute_write` with bad signature → `set_session_title`). Also fixed a SQLite connection leak (persistent connection opened per call, never closed). (#95)
 
 ---
 
@@ -1671,7 +1671,7 @@ Community contributions from @deboste, reviewed and refined.
 - **Session duplicate.** Copy icon on each session in the sidebar (visible on hover).
   Creates a new session with the same workspace and model, titled "(copy)".
 - **Browser tab title.** `document.title` updates to show the active session title
-  (e.g. "My Task -- Hermes"). Resets to "Hermes" when no session is active.
+  (e.g. "My Task -- Ov3rwatch"). Resets to "Ov3rwatch" when no session is active.
 
 ### Bug Fixes
 - Click guard added for duplicate button to prevent accidental session navigation.
@@ -1824,7 +1824,7 @@ The sprint that closed the last gaps for heavy agentic use.
   No single file exceeds 555 lines.
 
 ### Features
-- **Tool call cards inline.** Every tool Hermes uses now appears as a collapsible card
+- **Tool call cards inline.** Every tool Ov3rwatch uses now appears as a collapsible card
   in the conversation between the user message and the response. Live during streaming,
   restored from session history on reload. Shows tool name, preview, args, result snippet.
 - **Attachment metadata persists on reload.** File badges on user messages survive page
@@ -2016,7 +2016,7 @@ Visual audit via screenshot analysis. No new features -- design refinement only.
 ## [v0.1] Initial Build
 *March 30, 2026*
 
-Single-file web UI for Hermes. stdlib HTTP server, no external dependencies.
+Single-file web UI for Ov3rwatch. stdlib HTTP server, no external dependencies.
 Three-panel layout: sessions sidebar, chat area, workspace panel.
 
 **Core capabilities:**

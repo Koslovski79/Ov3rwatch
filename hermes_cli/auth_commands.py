@@ -344,7 +344,7 @@ def auth_remove_command(args) -> None:
         oauth_file = get_hermes_home() / ".anthropic_oauth.json"
         if oauth_file.exists():
             oauth_file.unlink()
-            print("Cleared Hermes Anthropic OAuth credentials")
+            print("Cleared Ov3rwatch Anthropic OAuth credentials")
 
     elif removed.source == "claude_code" and provider == "anthropic":
         from hermes_cli.auth import suppress_credential_source

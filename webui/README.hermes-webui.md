@@ -1,8 +1,8 @@
-# Hermes Web UI
+# Ov3rwatch Web UI
 
-[Hermes Agent](https://hermes-agent.nousresearch.com/) is a sophisticated autonomous agent that lives on your server, accessed via a terminal or messaging apps, that remembers what it learns and gets more capable the longer it runs.
+[Ov3rwatch Agent](https://hermes-agent.nousresearch.com/) is a sophisticated autonomous agent that lives on your server, accessed via a terminal or messaging apps, that remembers what it learns and gets more capable the longer it runs.
 
-Hermes WebUI is a lightweight, dark-themed web app interface in your browser for [Hermes Agent](https://hermes-agent.nousresearch.com/).
+Ov3rwatch WebUI is a lightweight, dark-themed web app interface in your browser for [Ov3rwatch Agent](https://hermes-agent.nousresearch.com/).
 Full parity with the CLI experience - everything you can do from a terminal,
 you can do from this UI. No build step, no framework, no bundler. Just Python
 and vanilla JS.
@@ -11,9 +11,9 @@ Layout: three-panel. Left sidebar for sessions and navigation, center for chat,
 right for workspace file browsing. Model, profile, and workspace controls live in
 the **composer footer** — always visible while composing. A circular context ring
 shows token usage at a glance. All settings and session tools are in the
-**Hermes Control Center** (launcher at the sidebar bottom).
+**Ov3rwatch Control Center** (launcher at the sidebar bottom).
 
-<img alt="Hermes Web UI — three-panel layout" width="1417" height="867" alt="image" src="https://github.com/user-attachments/assets/51adff98-53ee-4800-8508-78b6c34dd3dc" />
+<img alt="Ov3rwatch Web UI — three-panel layout" width="1417" height="867" alt="image" src="https://github.com/user-attachments/assets/51adff98-53ee-4800-8508-78b6c34dd3dc" />
 
 <table>
   <tr>
@@ -41,27 +41,27 @@ shows token usage at a glance. All settings and session tools are in the
   </tr>
 </table>
 
-This gives you nearly **1:1 parity with Hermes CLI from a convenient web UI** which you can access securely through an SSH tunnel from your Hermes setup. Single command to start this up, and a single command to SSH tunnel for access on your computer. Every single part of the web UI uses your existing Hermes agent and existing models, without requiring any additional setup.
+This gives you nearly **1:1 parity with Ov3rwatch CLI from a convenient web UI** which you can access securely through an SSH tunnel from your Ov3rwatch setup. Single command to start this up, and a single command to SSH tunnel for access on your computer. Every single part of the web UI uses your existing Ov3rwatch agent and existing models, without requiring any additional setup.
 
 ---
 
-## Why Hermes
+## Why Ov3rwatch
 
 Most AI tools reset every session. They don't know who you are, what you worked on, or what
 conventions your project follows. You re-explain yourself every time.
 
-Hermes retains context across sessions, runs scheduled jobs while you're offline, and gets
-smarter about your environment the longer it runs. It uses your existing Hermes agent setup,
+Ov3rwatch retains context across sessions, runs scheduled jobs while you're offline, and gets
+smarter about your environment the longer it runs. It uses your existing Ov3rwatch agent setup,
 your existing models, and requires no additional configuration to start.
 
 What makes it different from other agentic tools:
 
 - **Persistent memory** — user profile, agent notes, and a skills system that saves reusable
-  procedures; Hermes learns your environment and does not have to relearn it
+  procedures; Ov3rwatch learns your environment and does not have to relearn it
 - **Self-hosted scheduling** — cron jobs that fire while you're offline and deliver results to
   Telegram, Discord, Slack, Signal, email, and more
 - **10+ messaging platforms** — the same agent available in the terminal is reachable from your phone
-- **Self-improving skills** — Hermes writes and saves its own skills automatically from experience;
+- **Self-improving skills** — Ov3rwatch writes and saves its own skills automatically from experience;
   no marketplace to browse, no plugins to install
 - **Provider-agnostic** — OpenAI, Anthropic, Google, DeepSeek, OpenRouter, and more
 - **Orchestrates other agents** — can spawn Claude Code or Codex for heavy coding tasks and bring
@@ -70,7 +70,7 @@ What makes it different from other agentic tools:
 
 **vs. the field** *(landscape is actively shifting — see [HERMES.md](HERMES.md) for the full breakdown)*:
 
-| | OpenClaw | Claude Code | Codex CLI | OpenCode | Hermes |
+| | OpenClaw | Claude Code | Codex CLI | OpenCode | Ov3rwatch |
 |---|---|---|---|---|---|
 | Persistent memory (auto) | Yes | Partial† | Partial | Partial | Yes |
 | Scheduled jobs (self-hosted) | Yes | No‡ | No | No | Yes |
@@ -85,10 +85,10 @@ What makes it different from other agentic tools:
 ‡ Claude Code has cloud-managed scheduling (Anthropic infrastructure) and session-scoped `/loop`; no self-hosted cron
 
 **The closest competitor is OpenClaw** — both are always-on, self-hosted, open-source agents
-with memory, cron, and messaging. The key differences: Hermes writes and saves its own skills
+with memory, cron, and messaging. The key differences: Ov3rwatch writes and saves its own skills
 automatically as a core behavior (OpenClaw's skill system centers on a community marketplace);
-Hermes is more stable across updates (OpenClaw has documented release regressions and ClawHub
-has had security incidents involving malicious skills); and Hermes runs natively in the Python
+Ov3rwatch is more stable across updates (OpenClaw has documented release regressions and ClawHub
+has had security incidents involving malicious skills); and Ov3rwatch runs natively in the Python
 ecosystem. See [HERMES.md](HERMES.md) for the full side-by-side.
 
 ---
@@ -111,7 +111,7 @@ Or keep using the shell launcher:
 
 The bootstrap will:
 
-1. Detect Hermes Agent and, if missing, attempt the official installer (`curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash`).
+1. Detect Ov3rwatch Agent and, if missing, attempt the official installer (`curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash`).
 2. Find or create a Python environment with the WebUI dependencies.
 3. Start the web server and wait for `/health`.
 4. Open the browser unless you pass `--no-browser`.
@@ -176,7 +176,7 @@ docker run -d \
 
 ### Two-container setup (Agent + WebUI)
 
-If you run the Hermes Agent in its own Docker container and want the WebUI
+If you run the Ov3rwatch Agent in its own Docker container and want the WebUI
 in a separate container:
 
 ```bash
@@ -206,7 +206,7 @@ See `docker-compose.two-container.yml` for the full configuration.
 
 | Thing | How it finds it |
 |---|---|
-| Hermes agent dir | `HERMES_WEBUI_AGENT_DIR` env, then `~/.hermes/hermes-agent`, then sibling `../hermes-agent` |
+| Ov3rwatch agent dir | `HERMES_WEBUI_AGENT_DIR` env, then `~/.hermes/hermes-agent`, then sibling `../hermes-agent` |
 | Python executable | Agent venv first, then `.venv` in this repo, then system `python3` |
 | State directory | `HERMES_WEBUI_STATE_DIR` env, then `~/.hermes/webui-mvp` |
 | Default workspace | `HERMES_WEBUI_DEFAULT_WORKSPACE` env, then `~/workspace`, then state dir |
@@ -243,15 +243,15 @@ Full list of environment variables:
 | `HERMES_WEBUI_DEFAULT_WORKSPACE` | `~/workspace` | Default workspace |
 | `HERMES_WEBUI_DEFAULT_MODEL` | `openai/gpt-5.4-mini` | Default model |
 | `HERMES_WEBUI_PASSWORD` | *(unset)* | Set to enable password authentication |
-| `HERMES_HOME` | `~/.hermes` | Base directory for Hermes state (affects all paths) |
-| `HERMES_CONFIG_PATH` | `~/.hermes/config.yaml` | Path to Hermes config file |
+| `HERMES_HOME` | `~/.hermes` | Base directory for Ov3rwatch state (affects all paths) |
+| `HERMES_CONFIG_PATH` | `~/.hermes/config.yaml` | Path to Ov3rwatch config file |
 
 ---
 
 ## Accessing from a remote machine
 
 The server binds to `127.0.0.1` by default (loopback only). If you are running
-Hermes on a VPS or remote server, use an SSH tunnel from your local machine:
+Ov3rwatch on a VPS or remote server, use an SSH tunnel from your local machine:
 
 ```bash
 ssh -N -L <local-port>:127.0.0.1:<remote-port> <user>@<server-host>
@@ -276,7 +276,7 @@ are running over SSH.
 WireGuard. Install it on your server and your phone, and they join the same
 private network -- no port forwarding, no SSH tunnels, no public exposure.
 
-The Hermes Web UI is fully responsive with a mobile-optimized layout
+The Ov3rwatch Web UI is fully responsive with a mobile-optimized layout
 (hamburger sidebar, bottom navigation bar, touch-friendly controls), so it
 works well as a daily-driver agent interface from your phone.
 
@@ -309,11 +309,11 @@ for an app-like experience.
 If you prefer to launch the server directly:
 
 ```bash
-cd /path/to/hermes-agent          # or wherever sys.path can find Hermes modules
+cd /path/to/hermes-agent          # or wherever sys.path can find Ov3rwatch modules
 HERMES_WEBUI_PORT=8787 venv/bin/python /path/to/hermes-webui/server.py
 ```
 
-Note: use the agent venv Python (or any Python environment that has the Hermes agent dependencies installed). System Python will be missing `openai`, `httpx`, and other required packages.
+Note: use the agent venv Python (or any Python environment that has the Ov3rwatch agent dependencies installed). System Python will be missing `openai`, `httpx`, and other required packages.
 
 Health check:
 
@@ -325,7 +325,7 @@ curl http://127.0.0.1:8787/health
 
 ## Running tests
 
-Tests discover the repo and the Hermes agent dynamically -- no hardcoded paths.
+Tests discover the repo and the Ov3rwatch agent dynamically -- no hardcoded paths.
 
 ```bash
 cd hermes-webui
@@ -348,7 +348,7 @@ across 53 test files.
 
 ### Chat and agent
 - Streaming responses via SSE (tokens appear as they are generated)
-- Multi-provider model support -- any Hermes API provider (OpenAI, Anthropic, Google, DeepSeek, Nous Portal, OpenRouter, MiniMax, Z.AI); dynamic model dropdown populated from configured keys
+- Multi-provider model support -- any Ov3rwatch API provider (OpenAI, Anthropic, Google, DeepSeek, Nous Portal, OpenRouter, MiniMax, Z.AI); dynamic model dropdown populated from configured keys
 - Send a message while one is processing -- it queues automatically
 - Edit any past user message inline and regenerate from that point
 - Retry the last assistant response with one click
@@ -425,7 +425,7 @@ across 53 test files.
 - Custom themes: define a `:root[data-theme="name"]` CSS block and it works — see [THEMES.md](THEMES.md)
 
 ### Settings and configuration
-- **Hermes Control Center** (sidebar launcher button) -- Conversation tab (export/import/clear), Preferences tab (model, send key, theme, language, all toggles), System tab (version, password)
+- **Ov3rwatch Control Center** (sidebar launcher button) -- Conversation tab (export/import/clear), Preferences tab (model, send key, theme, language, all toggles), System tab (version, password)
 - Send key: Enter (default) or Ctrl/Cmd+Enter
 - Show/hide CLI sessions toggle (enabled by default)
 - Token usage display toggle (off by default, also via `/usage` command)
@@ -501,7 +501,7 @@ State lives outside the repo at `~/.hermes/webui-mvp/` by default
 
 ## Docs
 
-- `HERMES.md` -- why Hermes, mental model, and detailed comparison to Claude Code / Codex / OpenCode / Cursor
+- `HERMES.md` -- why Ov3rwatch, mental model, and detailed comparison to Claude Code / Codex / OpenCode / Cursor
 - `ROADMAP.md` -- feature roadmap and sprint history
 - `ARCHITECTURE.md` -- system design, all API endpoints, implementation notes
 - `TESTING.md` -- manual browser test plan and automated coverage reference
@@ -511,12 +511,12 @@ State lives outside the repo at `~/.hermes/webui-mvp/` by default
 
 ## Contributors
 
-Hermes WebUI is built with help from the open-source community. Every PR — whether merged directly or incorporated via rebase — shapes the project, and we're grateful to everyone who has taken the time to contribute.
+Ov3rwatch WebUI is built with help from the open-source community. Every PR — whether merged directly or incorporated via rebase — shapes the project, and we're grateful to everyone who has taken the time to contribute.
 
 ### Major contributions
 
 **[@aronprins](https://github.com/aronprins)** — v0.50.0 UI overhaul (PR #242)
-The biggest single contribution to the project: a complete UI redesign that moved model/profile/workspace controls into the composer footer, replaced the gear-icon settings panel with the Hermes Control Center (tabbed modal), removed the activity bar in favor of inline composer status, redesigned the session list with a `⋯` action dropdown, and added the workspace panel state machine. 26 commits, thoroughly designed and iterated through multiple review rounds.
+The biggest single contribution to the project: a complete UI redesign that moved model/profile/workspace controls into the composer footer, replaced the gear-icon settings panel with the Ov3rwatch Control Center (tabbed modal), removed the activity bar in favor of inline composer status, redesigned the session list with a `⋯` action dropdown, and added the workspace panel state machine. 26 commits, thoroughly designed and iterated through multiple review rounds.
 
 **[@iRonin](https://github.com/iRonin)** — Security hardening sprint (PRs #196–#204)
 Six consecutive security and reliability PRs: session memory leak fix (expired token pruning), Content-Security-Policy + Permissions-Policy headers, 30-second slow-client connection timeout, optional HTTPS/TLS support via environment variables, upstream branch tracking fix for self-update, and CLI session support in the file browser API. This is the kind of focused, high-quality security work that makes a self-hosted tool trustworthy.

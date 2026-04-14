@@ -278,7 +278,7 @@ TOOLSETS = {
         "includes": ["web", "vision", "image_gen"],
     },
     # ==========================================================================
-    # Full Hermes toolsets (CLI + messaging platforms)
+    # Full Ov3rwatch toolsets (CLI + messaging platforms)
     #
     # All platforms share the same core tools (including send_message,
     # which is gated on gateway running via its check_fn).
@@ -407,7 +407,7 @@ TOOLSETS = {
         "includes": [],
     },
     "hermes-email": {
-        "description": "Email bot toolset - interact with Hermes via email (IMAP/SMTP)",
+        "description": "Email bot toolset - interact with Ov3rwatch via email (IMAP/SMTP)",
         "tools": _HERMES_CORE_TOOLS,
         "includes": [],
     },
@@ -452,7 +452,7 @@ TOOLSETS = {
         "includes": [],
     },
     "hermes-sms": {
-        "description": "SMS bot toolset - interact with Hermes via SMS (Twilio)",
+        "description": "SMS bot toolset - interact with Ov3rwatch via SMS (Twilio)",
         "tools": _HERMES_CORE_TOOLS,
         "includes": [],
     },

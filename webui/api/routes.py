@@ -1,5 +1,5 @@
 """
-Hermes Web UI -- Route handlers for GET and POST endpoints.
+Ov3rwatch Web UI -- Route handlers for GET and POST endpoints.
 Extracted from server.py (Sprint 11) so server.py is a thin shell.
 """
 
@@ -317,7 +317,7 @@ def handle_get(handler, parsed) -> bool:
 
     if parsed.path == "/login":
         _settings = load_settings()
-        _bn = _html.escape(_settings.get("bot_name") or "Hermes")
+        _bn = _html.escape(_settings.get("bot_name") or "Ov3rwatch")
         _lang = _settings.get("language", "en")
         _login_strings = _LOGIN_LOCALE.get(_lang, _LOGIN_LOCALE["en"])
         _page = (
@@ -993,7 +993,7 @@ def handle_post(handler, parsed) -> bool:
     # ── Settings (POST) ──
     if parsed.path == "/api/settings":
         if "bot_name" in body:
-            body["bot_name"] = (str(body["bot_name"]) or "").strip() or "Hermes"
+            body["bot_name"] = (str(body["bot_name"]) or "").strip() or "Ov3rwatch"
         saved = save_settings(body)
         saved.pop("password_hash", None)  # never expose hash to client
         return j(handler, saved)
@@ -1885,7 +1885,7 @@ def _handle_chat_sync(handler, body):
             from api.config import resolve_model_provider
 
             _model, _provider, _base_url = resolve_model_provider(s.model)
-            # Resolve API key via Hermes runtime provider (matches gateway behaviour)
+            # Resolve API key via Ov3rwatch runtime provider (matches gateway behaviour)
             _api_key = None
             try:
                 from hermes_cli.runtime_provider import resolve_runtime_provider

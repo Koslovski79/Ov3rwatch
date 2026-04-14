@@ -1,5 +1,5 @@
 """
-Hermes Web UI -- Shared configuration, constants, and global state.
+Ov3rwatch Web UI -- Shared configuration, constants, and global state.
 Imported by all other api/* modules and by server.py.
 
 Discovery order for all paths:
@@ -52,7 +52,7 @@ PROJECTS_FILE = STATE_DIR / "projects.json"
 logger = logging.getLogger(__name__)
 
 
-# ── Hermes agent directory discovery ─────────────────────────────────────────
+# ── Ov3rwatch agent directory discovery ─────────────────────────────────────────
 def _discover_agent_dir() -> Path:
     """
     Locate the hermes-agent checkout using a multi-strategy search.
@@ -99,7 +99,7 @@ def _discover_agent_dir() -> Path:
 
 def _discover_python(agent_dir: Path) -> str:
     """
-    Locate a Python executable that has the Hermes agent dependencies installed.
+    Locate a Python executable that has the Ov3rwatch agent dependencies installed.
 
     Priority:
       1. HERMES_WEBUI_PYTHON env var
@@ -140,19 +140,19 @@ def _discover_python(agent_dir: Path) -> str:
 _AGENT_DIR = _discover_agent_dir()
 PYTHON_EXE = _discover_python(_AGENT_DIR)
 
-# ── Inject agent dir into sys.path so Hermes modules are importable ──────────
+# ── Inject agent dir into sys.path so Ov3rwatch modules are importable ──────────
 
 # When users (or CI builds) run `pip install --target .` or
 # `pip install -t .` inside the hermes-agent checkout, third-party
 # package directories (openai/, pydantic/, requests/, etc.) end up
-# alongside real Hermes source files.  Putting _AGENT_DIR at the
+# alongside real Ov3rwatch source files.  Putting _AGENT_DIR at the
 # FRONT of sys.path means Python resolves `import pydantic` from that
 # local directory — which breaks whenever the host platform differs
 # from the container (e.g. macOS .so files inside a Linux image).
 #
 # Fix: insert _AGENT_DIR at the END of sys.path.  Python searches
 # entries in order, so site-packages resolves pip packages correctly,
-# and Hermes-specific modules (run_agent, hermes/, etc.) still
+# and Ov3rwatch-specific modules (run_agent, hermes/, etc.) still
 # resolve because they do not exist in site-packages.
 
 if _AGENT_DIR is not None:
@@ -288,7 +288,7 @@ def print_startup_config() -> None:
 
     lines = [
         "",
-        "  Hermes Web UI -- startup config",
+        "  Ov3rwatch Web UI -- startup config",
         "  --------------------------------",
         f"  repo root   : {REPO_ROOT}",
         f"  agent dir   : {_AGENT_DIR if _AGENT_DIR else 'NOT FOUND'}  {ok if _AGENT_DIR else err}",
@@ -303,7 +303,7 @@ def print_startup_config() -> None:
 
     if not _HERMES_FOUND:
         print(
-            f"{err}  Could not find the Hermes agent directory.\n"
+            f"{err}  Could not find the Ov3rwatch agent directory.\n"
             "      The server will start but agent features will not work.\n"
             "\n"
             "      To fix, set one of:\n"
@@ -318,7 +318,7 @@ def print_startup_config() -> None:
 
 def verify_hermes_imports() -> tuple:
     """
-    Attempt to import the key Hermes modules.
+    Attempt to import the key Ov3rwatch modules.
     Returns (ok: bool, missing: list[str], errors: dict[str, str]).
     """
     required = ["run_agent"]
@@ -431,7 +431,7 @@ _FALLBACK_MODELS = [
     {"provider": "Other", "id": "meta-llama/llama-4-scout", "label": "Llama 4 Scout"},
 ]
 
-# Provider display names for known Hermes provider IDs
+# Provider display names for known Ov3rwatch provider IDs
 _PROVIDER_DISPLAY = {
     "nous": "Nous Portal",
     "openrouter": "OpenRouter",
@@ -1119,7 +1119,7 @@ _SETTINGS_DEFAULTS = {
     "theme": "dark",  # active UI theme name (no enum gate -- allows custom themes)
     "language": "en",  # UI locale code; must match a key in static/i18n.js LOCALES
     "bot_name": os.getenv(
-        "HERMES_WEBUI_BOT_NAME", "Hermes"
+        "HERMES_WEBUI_BOT_NAME", "Ov3rwatch"
     ),  # display name for the assistant
     "sound_enabled": False,  # play notification sound when assistant finishes
     "notifications_enabled": False,  # browser notification when tab is in background

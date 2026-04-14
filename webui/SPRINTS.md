@@ -1,4 +1,4 @@
-# Hermes Web UI -- Forward Sprint Plan
+# Ov3rwatch Web UI -- Forward Sprint Plan
 
 > Current state: v0.50.21 | 961 tests | Full daily driver — CLI parity achieved
 >
@@ -46,13 +46,13 @@ sharing/public URLs, code execution inline.
 
 ## Sprint 11 -- Multi-Provider Models + Streaming Smoothness (COMPLETED)
 
-**Theme:** Use any Hermes-supported model provider from the UI, and make
+**Theme:** Use any Ov3rwatch-supported model provider from the UI, and make
 heavy agentic work feel fast and fluid.
 
 **Why now:** Two high-impact gaps converge here. First, the model dropdown is
-hardcoded to ~10 OpenRouter model strings. If Hermes is configured with direct
+hardcoded to ~10 OpenRouter model strings. If Ov3rwatch is configured with direct
 Anthropic, OpenAI, Google, or other API providers, the web UI can't use them.
-This means users who set up Hermes with native API keys are locked out of
+This means users who set up Ov3rwatch with native API keys are locked out of
 their own models in the browser. Second, the streaming render path rebuilds
 the entire message list on every tool event, causing visible flicker during
 heavy agentic work.
@@ -63,7 +63,7 @@ heavy agentic work.
 - Scroll position lost on re-render during streaming (messages jump).
 
 ### Track B: Features
-- **Multi-provider model support:** Query Hermes agent's configured providers
+- **Multi-provider model support:** Query Ov3rwatch agent's configured providers
   and available models at startup via a new `GET /api/models` endpoint. The
   model dropdown populates dynamically from whatever providers the user has
   configured (OpenRouter, direct OpenAI, direct Anthropic, Google, DeepSeek,
@@ -84,7 +84,7 @@ heavy agentic work.
   Completes the server split started in Sprint 10.
 
 **Tests:** ~15 new. Total: ~205.
-**Hermes CLI parity impact:** High (model provider parity is a major CLI gap)
+**Ov3rwatch CLI parity impact:** High (model provider parity is a major CLI gap)
 **Claude parity impact:** Low (streaming smoothness)
 
 ---
@@ -127,14 +127,14 @@ to keep important conversations accessible.
   client disconnect, allowing reconnect with the same stream_id.
 
 **Tests:** ~15 new. Total: ~216.
-**Hermes CLI parity impact:** Medium (settings persistence, reliability)
+**Ov3rwatch CLI parity impact:** Medium (settings persistence, reliability)
 **Claude parity impact:** Medium (settings panel, pinned conversations)
 
 ---
 
 ## Sprint 13 -- Alerts, Session QoL, Polish (COMPLETED)
 
-**Theme:** Know what Hermes is doing, and small quality-of-life wins.
+**Theme:** Know what Ov3rwatch is doing, and small quality-of-life wins.
 
 **Why now:** Cron jobs run silently. Background errors surface nowhere. You have
 no way to know a long-running task finished (or failed) while you were on another
@@ -156,10 +156,10 @@ to daily friction.
 - **Session duplicate:** Copy icon on each session in the sidebar (visible on
   hover). Creates a new session with same workspace/model, titled "(copy)".
 - **Browser tab title:** `document.title` updates to show the active session
-  title (e.g. "My Task — Hermes"). Resets to "Hermes" when no session active.
+  title (e.g. "My Task — Ov3rwatch"). Resets to "Ov3rwatch" when no session active.
 
 **Tests:** ~10 new. Total: ~221.
-**Hermes CLI parity impact:** Medium (cron visibility, error surfacing)
+**Ov3rwatch CLI parity impact:** Medium (cron visibility, error surfacing)
 **Claude parity impact:** Low
 
 ---
@@ -188,7 +188,7 @@ organize sessions properly.
   of list. `POST /api/session/archive` endpoint.
 
 **Tests:** ~12 new. Total: ~233.
-**Hermes CLI parity impact:** Medium (file rename, folder create)
+**Ov3rwatch CLI parity impact:** Medium (file rename, folder create)
 **Claude parity impact:** Medium (Mermaid, tags, archive)
 
 ---
@@ -232,7 +232,7 @@ organizational gap vs. Claude's project folders.
 - `_index.json` includes `project_id` for fast client-side filtering.
 
 **Tests:** 13 new. Total: ~237.
-**Hermes CLI parity impact:** Low (CLI has no session organization)
+**Ov3rwatch CLI parity impact:** Low (CLI has no session organization)
 **Claude parity impact:** Very High (projects are a core Claude concept)
 
 ### Candidates for later sprints
@@ -282,7 +282,7 @@ inconsistently across platforms. These were the most common visual complaints.
 - Slash command autocomplete popup
 
 **Tests:** 74 new (test_sprint16.py: safe HTML rendering, XSS security, sidebar polish). Total: 289.
-**Hermes CLI parity impact:** Low
+**Ov3rwatch CLI parity impact:** Low
 **Claude parity impact:** Medium (sidebar polish matches Claude's quality bar)
 
 ---
@@ -334,7 +334,7 @@ handler for slash command autocomplete.
 - Workspace tree/accordion view (full implementation of Issue #22)
 
 **Tests:** 6 new (test_sprint17.py). Total: 318.
-**Hermes CLI parity impact:** Low (slash commands add convenience)
+**Ov3rwatch CLI parity impact:** Low (slash commands add convenience)
 **Claude parity impact:** Medium (workspace nav, slash commands match Claude UX)
 
 ---
@@ -365,7 +365,7 @@ staying open on directory navigation was a daily-driver annoyance.
   Nesting depth shown via indentation. Empty directories show "(empty)".
 
 **Tests:** 0 new (pure CSS/DOM changes). Total: 318.
-**Hermes CLI parity impact:** Low
+**Ov3rwatch CLI parity impact:** Low
 **Claude parity impact:** High (reasoning display matches Claude's UI)
 
 ---
@@ -399,7 +399,7 @@ hardening feature before the app is safe to expose to a network.
 - `_set_password` special field in save_settings for secure password updates.
 
 **Tests:** 10 new. Total: 328.
-**Hermes CLI parity impact:** Low (CLI has no auth concerns)
+**Ov3rwatch CLI parity impact:** Low (CLI has no auth concerns)
 **Claude parity impact:** High (Claude is authenticated)
 
 ---
@@ -430,7 +430,7 @@ UX was a low-effort high-impact polish opportunity that pairs naturally.
 - `updateSendBtn()` in `ui.js` hooked into setBusy, renderTray, autoResize.
 
 **Tests:** 52 new (voice) + 33 new (send button). Total: 415.
-**Hermes CLI parity impact:** Medium (voice not in CLI, but adds capability)
+**Ov3rwatch CLI parity impact:** Medium (voice not in CLI, but adds capability)
 **Claude parity impact:** High (Claude has native voice mode)
 
 ---
@@ -463,14 +463,14 @@ enables deployment beyond localhost. Both were achievable without new dependenci
 - Desktop layout untouched — all mobile elements `display:none` by default.
 
 **Tests:** 0 new (CSS/DOM changes). Total: 415.
-**Hermes CLI parity impact:** Low
+**Ov3rwatch CLI parity impact:** Low
 **Claude parity impact:** High (Claude has mobile layout)
 
 ---
 
 ## Sprint 22 -- Multi-Profile Support (COMPLETED, Issue #28)
 
-**Theme:** Switch between Hermes agent profiles seamlessly from the web UI.
+**Theme:** Switch between Ov3rwatch agent profiles seamlessly from the web UI.
 
 **Why now:** Issue #28 requested full profile management in the UI. The CLI has
 had comprehensive profile support since v0.6.0 — isolated instances with their
@@ -520,7 +520,7 @@ single default profile, blocking multi-persona workflows.
 - Zero modifications to hermes-agent code required.
 
 **Tests:** 0 new (profile management requires hermes-agent integration). Total: 415.
-**Hermes CLI parity impact:** Very High (profile support is a major CLI feature)
+**Ov3rwatch CLI parity impact:** Very High (profile support is a major CLI feature)
 **Claude parity impact:** Low (Claude has no profile concept)
 
 ---
@@ -575,7 +575,7 @@ reliable.
   `renderSessionListFromCache()`, toggle UI.
 
 **Tests:** 8 new (test_sprint23.py). Total: 423.
-**Hermes CLI parity impact:** High (coherent profile behavior)
+**Ov3rwatch CLI parity impact:** High (coherent profile behavior)
 **Claude parity impact:** Low
 
 ---
@@ -629,7 +629,7 @@ the app to others.
 - Update test count in all docs to match actual pytest output after sprint merges.
 
 **Estimated tests:** ~10 new. Target total: ~435.
-**Hermes CLI parity impact:** Low
+**Ov3rwatch CLI parity impact:** Low
 **Claude parity impact:** Low
 **User-facing value:** Medium -- removes rough edges that would bother new users
 
@@ -642,7 +642,7 @@ feels like a real application -- not a browser tab.
 
 **Why this matters:** The web UI requires an SSH tunnel or a server setup to
 use. A .app bundle that a user can double-click and immediately have a working
-Hermes interface is genuinely differentiating. No other open-source Hermes
+Ov3rwatch interface is genuinely differentiating. No other open-source Ov3rwatch
 interface ships as a native Mac app. This is the highest-leverage remaining
 investment for user adoption.
 
@@ -669,14 +669,14 @@ The thin shell approach gets 95% of the benefit at 5% of the cost.
 **Files to create:**
 ```
 desktop/
-  HermesApp.swift          -- @main entry point, NSApp delegate
+  Ov3rwatchApp.swift          -- @main entry point, NSApp delegate
   AppDelegate.swift        -- lifecycle: start server on launch, stop on quit
   WindowController.swift   -- NSWindow + WKWebView setup, cmd shortcuts
   ServerManager.swift      -- spawn/monitor Python subprocess, pick free port
   MenuBuilder.swift        -- native app menu (File, Edit, View, Window, Help)
   Info.plist               -- bundle ID, display name, version, icon
   Assets.xcassets/         -- app icon (1024x1024 + all required sizes)
-  HermesApp.xcodeproj/     -- Xcode project file
+  Ov3rwatchApp.xcodeproj/     -- Xcode project file
 ```
 
 **ServerManager.swift responsibilities:**
@@ -698,7 +698,7 @@ desktop/
 - File > New Window (Cmd+Shift+N) -- opens second window with its own WKWebView
 - View > Toggle Sidebar (Cmd+Shift+S)
 - Window > Zoom, Minimize (standard)
-- Help > About Hermes, Check for Updates (links to GitHub releases page)
+- Help > About Ov3rwatch, Check for Updates (links to GitHub releases page)
 
 ### Track B: Python Bundling
 
@@ -714,7 +714,7 @@ Two options, in order of preference:
 **Option B: Bundle python-standalone (self-contained, larger)**
 - Use `python-build-standalone` (from Astral/uv project): pre-built Python
   3.11 binaries, ~30MB compressed, no Xcode toolchain needed to build
-- Extract to `~/Library/Application Support/Hermes/python/` on first launch
+- Extract to `~/Library/Application Support/Ov3rwatch/python/` on first launch
 - Install `requirements.txt` via bundled pip into a local venv
 - Pros: zero dependencies, works on a clean Mac
 - Cons: first launch takes ~10-20s for extraction + pip install; ~30MB download
@@ -725,7 +725,7 @@ Two options, in order of preference:
 ### Track C: Distribution
 
 **GitHub Releases (primary):**
-- Build with `xcodebuild -scheme HermesApp -configuration Release -archivePath`
+- Build with `xcodebuild -scheme Ov3rwatchApp -configuration Release -archivePath`
 - `xcodebuild -exportArchive` to produce a .app bundle
 - `hdiutil create` to produce a .dmg with drag-to-Applications installer UI
 - Upload .dmg as a GitHub Release asset via `gh release create`
@@ -743,7 +743,7 @@ Document the right-click > Open workaround in the README for unsigned builds.
 
 **Universal binary (Intel + Apple Silicon):**
 ```bash
-xcodebuild archive -scheme HermesApp -destination "generic/platform=macOS"
+xcodebuild archive -scheme Ov3rwatchApp -destination "generic/platform=macOS"
 ```
 Both architectures in one .app. No separate downloads needed.
 
@@ -770,7 +770,7 @@ Both architectures in one .app. No separate downloads needed.
 **Menu bar mode (optional, v2):**
 - A small status bar item (beaker icon in menu bar) that opens a compact popover
 - Popover shows current session status, last message, quick-compose field
-- Useful for running Hermes in the background without a full window
+- Useful for running Ov3rwatch in the background without a full window
 
 ### Track E: Testing
 
@@ -778,8 +778,8 @@ Since the Swift app is thin glue, most testing remains in the existing pytest
 suite (server still runs identically). New Swift-specific tests:
 - `ServerManagerTests.swift`: verify port picking, process spawn, health wait
 - UI tests via `XCUITest`: launch app, wait for WKWebView to load, verify
-  title bar shows "Hermes", verify /health responds
-- Smoke test in CI: `xcodebuild test -scheme HermesApp`
+  title bar shows "Ov3rwatch", verify /health responds
+- Smoke test in CI: `xcodebuild test -scheme Ov3rwatchApp`
 
 ### Implementation Order
 
@@ -805,15 +805,15 @@ suite (server still runs identically). New Swift-specific tests:
 
 ```
 desktop/mac/
-  HermesApp/
-    HermesApp.swift
+  Ov3rwatchApp/
+    Ov3rwatchApp.swift
     AppDelegate.swift
     WindowController.swift
     ServerManager.swift
     MenuBuilder.swift
     Assets.xcassets/
     Info.plist
-  HermesApp.xcodeproj/
+  Ov3rwatchApp.xcodeproj/
   README.md              -- build instructions, requirements, signing notes
 .github/workflows/
   mac-release.yml        -- build + sign + upload DMG on tag push
@@ -827,7 +827,7 @@ at build time.
 bundling complexity). Realistic for a focused weekend or a dedicated agent run
 with clear instructions.
 
-**Hermes CLI parity impact:** N/A (different distribution channel)
+**Ov3rwatch CLI parity impact:** N/A (different distribution channel)
 **Claude parity impact:** Medium (Claude.app is a native Mac app)
 **User-facing value:** Very high -- lowers barrier to entry dramatically,
 genuinely differentiating for an open-source project
@@ -836,7 +836,7 @@ genuinely differentiating for an open-source project
 
 ## Feature Parity Summary
 
-### Hermes CLI Parity (as of Sprint 19)
+### Ov3rwatch CLI Parity (as of Sprint 19)
 
 | CLI Feature | Status |
 |-------------|--------|
@@ -903,7 +903,7 @@ genuinely differentiating for an open-source project
   infrastructure, not reproducible.
 - **Real-time collaboration:** Multiple users in the same session simultaneously.
   Single-user assumption throughout.
-- **Plugin marketplace:** Hermes skills cover this use case already.
+- **Plugin marketplace:** Ov3rwatch skills cover this use case already.
 
 ---
 
@@ -1163,7 +1163,7 @@ New test cases in `tests/test_sprint26.py`:
 ---
 
 **Estimated tests:** 8 new. Target total: ~443.
-**Hermes CLI parity impact:** None
+**Ov3rwatch CLI parity impact:** None
 **Claude parity impact:** Medium (Claude.ai has light/dark/system sync)
 **User-facing value:** High -- first thing many users ask for
 

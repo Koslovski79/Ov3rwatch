@@ -1,23 +1,23 @@
-# Hermes Agent v0.9.0 (v2026.4.13)
+# Ov3rwatch Agent v0.9.0 (v2026.4.13)
 
 **Release Date:** April 13, 2026
 **Since v0.8.0:** 487 commits · 269 merged PRs · 167 resolved issues · 493 files changed · 63,281 insertions · 24 contributors
 
-> The everywhere release — Hermes goes mobile with Termux/Android, adds iMessage and WeChat, ships Fast Mode for OpenAI and Anthropic, introduces background process monitoring, launches a local web dashboard for managing your agent, and delivers the deepest security hardening pass yet across 16 supported platforms.
+> The everywhere release — Ov3rwatch goes mobile with Termux/Android, adds iMessage and WeChat, ships Fast Mode for OpenAI and Anthropic, introduces background process monitoring, launches a local web dashboard for managing your agent, and delivers the deepest security hardening pass yet across 16 supported platforms.
 
 ---
 
 ## ✨ Highlights
 
-- **Local Web Dashboard** — A new browser-based dashboard for managing your Hermes Agent locally. Configure settings, monitor sessions, browse skills, and manage your gateway — all from a clean web interface without touching config files or the terminal. The easiest way to get started with Hermes.
+- **Local Web Dashboard** — A new browser-based dashboard for managing your Ov3rwatch Agent locally. Configure settings, monitor sessions, browse skills, and manage your gateway — all from a clean web interface without touching config files or the terminal. The easiest way to get started with Ov3rwatch.
 
 - **Fast Mode (`/fast`)** — Priority processing for OpenAI and Anthropic models. Toggle `/fast` to route through priority queues for significantly lower latency on supported models (GPT-5.4, Codex, Claude). Expands across all OpenAI Priority Processing models and Anthropic's fast tier. ([#6875](https://github.com/NousResearch/hermes-agent/pull/6875), [#6960](https://github.com/NousResearch/hermes-agent/pull/6960), [#7037](https://github.com/NousResearch/hermes-agent/pull/7037))
 
-- **iMessage via BlueBubbles** — Full iMessage integration through BlueBubbles, bringing Hermes to Apple's messaging ecosystem. Auto-webhook registration, setup wizard integration, and crash resilience. ([#6437](https://github.com/NousResearch/hermes-agent/pull/6437), [#6460](https://github.com/NousResearch/hermes-agent/pull/6460), [#6494](https://github.com/NousResearch/hermes-agent/pull/6494))
+- **iMessage via BlueBubbles** — Full iMessage integration through BlueBubbles, bringing Ov3rwatch to Apple's messaging ecosystem. Auto-webhook registration, setup wizard integration, and crash resilience. ([#6437](https://github.com/NousResearch/hermes-agent/pull/6437), [#6460](https://github.com/NousResearch/hermes-agent/pull/6460), [#6494](https://github.com/NousResearch/hermes-agent/pull/6494))
 
-- **WeChat (Weixin) & WeCom Callback Mode** — Native WeChat support via iLink Bot API and a new WeCom callback-mode adapter for self-built enterprise apps. Streaming cursor, media uploads, markdown link handling, and atomic state persistence. Hermes now covers the Chinese messaging ecosystem end-to-end. ([#7166](https://github.com/NousResearch/hermes-agent/pull/7166), [#7943](https://github.com/NousResearch/hermes-agent/pull/7943))
+- **WeChat (Weixin) & WeCom Callback Mode** — Native WeChat support via iLink Bot API and a new WeCom callback-mode adapter for self-built enterprise apps. Streaming cursor, media uploads, markdown link handling, and atomic state persistence. Ov3rwatch now covers the Chinese messaging ecosystem end-to-end. ([#7166](https://github.com/NousResearch/hermes-agent/pull/7166), [#7943](https://github.com/NousResearch/hermes-agent/pull/7943))
 
-- **Termux / Android Support** — Run Hermes natively on Android via Termux. Adapted install paths, TUI optimizations for mobile screens, voice backend support, and the `/image` command work on-device. ([#6834](https://github.com/NousResearch/hermes-agent/pull/6834))
+- **Termux / Android Support** — Run Ov3rwatch natively on Android via Termux. Adapted install paths, TUI optimizations for mobile screens, voice backend support, and the `/image` command work on-device. ([#6834](https://github.com/NousResearch/hermes-agent/pull/6834))
 
 - **Background Process Monitoring (`watch_patterns`)** — Set patterns to watch for in background process output and get notified in real-time when they match. Monitor for errors, wait for specific events ("listening on port"), or watch build logs — all without polling. ([#7635](https://github.com/NousResearch/hermes-agent/pull/7635))
 
@@ -25,13 +25,13 @@
 
 - **Pluggable Context Engine** — Context management is now a pluggable slot via `hermes plugins`. Swap in custom context engines that control what the agent sees each turn — filtering, summarization, or domain-specific context injection. ([#7464](https://github.com/NousResearch/hermes-agent/pull/7464))
 
-- **Unified Proxy Support** — SOCKS proxy, `DISCORD_PROXY`, and system proxy auto-detection across all gateway platforms. Hermes behind corporate firewalls just works. ([#6814](https://github.com/NousResearch/hermes-agent/pull/6814))
+- **Unified Proxy Support** — SOCKS proxy, `DISCORD_PROXY`, and system proxy auto-detection across all gateway platforms. Ov3rwatch behind corporate firewalls just works. ([#6814](https://github.com/NousResearch/hermes-agent/pull/6814))
 
 - **Comprehensive Security Hardening** — Path traversal protection in checkpoint manager, shell injection neutralization in sandbox writes, SSRF redirect guards in Slack image uploads, Twilio webhook signature validation (SMS RCE fix), API server auth enforcement, git argument injection prevention, and approval button authorization. ([#7933](https://github.com/NousResearch/hermes-agent/pull/7933), [#7944](https://github.com/NousResearch/hermes-agent/pull/7944), [#7940](https://github.com/NousResearch/hermes-agent/pull/7940), [#7151](https://github.com/NousResearch/hermes-agent/pull/7151), [#7156](https://github.com/NousResearch/hermes-agent/pull/7156))
 
-- **`hermes backup` & `hermes import`** — Full backup and restore of your Hermes configuration, sessions, skills, and memory. Migrate between machines or create snapshots before major changes. ([#7997](https://github.com/NousResearch/hermes-agent/pull/7997))
+- **`hermes backup` & `hermes import`** — Full backup and restore of your Ov3rwatch configuration, sessions, skills, and memory. Migrate between machines or create snapshots before major changes. ([#7997](https://github.com/NousResearch/hermes-agent/pull/7997))
 
-- **16 Supported Platforms** — With BlueBubbles (iMessage) and WeChat joining Telegram, Discord, Slack, WhatsApp, Signal, Matrix, Email, SMS, DingTalk, Feishu, WeCom, Mattermost, Home Assistant, and Webhooks, Hermes now runs on 16 messaging platforms out of the box.
+- **16 Supported Platforms** — With BlueBubbles (iMessage) and WeChat joining Telegram, Discord, Slack, WhatsApp, Signal, Matrix, Email, SMS, DingTalk, Feishu, WeCom, Mattermost, Home Assistant, and Webhooks, Ov3rwatch now runs on 16 messaging platforms out of the box.
 
 - **`/debug` & `hermes debug share`** — New debugging toolkit: `/debug` slash command across all platforms for quick diagnostics, plus `hermes debug share` to upload a full debug report to a pastebin for easy sharing when troubleshooting. ([#8681](https://github.com/NousResearch/hermes-agent/pull/8681))
 
@@ -150,7 +150,7 @@
 - **Component-separated logging** with session context and filtering ([#7991](https://github.com/NousResearch/hermes-agent/pull/7991))
 - **`network.force_ipv4`** config to fix IPv6 timeout issues ([#8196](https://github.com/NousResearch/hermes-agent/pull/8196))
 - **Standardize message whitespace and JSON formatting** ([#7988](https://github.com/NousResearch/hermes-agent/pull/7988))
-- **Rebrand OpenClaw → Hermes** during migration ([#8210](https://github.com/NousResearch/hermes-agent/pull/8210))
+- **Rebrand OpenClaw → Ov3rwatch** during migration ([#8210](https://github.com/NousResearch/hermes-agent/pull/8210))
 - Config.yaml takes priority over env vars for auxiliary settings ([#7889](https://github.com/NousResearch/hermes-agent/pull/7889))
 - Harden setup provider flows + live OpenRouter catalog refresh ([#7078](https://github.com/NousResearch/hermes-agent/pull/7078))
 - Normalize reasoning effort ordering across all surfaces ([#6804](https://github.com/NousResearch/hermes-agent/pull/6804))

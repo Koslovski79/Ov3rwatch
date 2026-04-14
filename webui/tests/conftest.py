@@ -47,7 +47,7 @@ if not SERVER_SCRIPT.exists():
         "Is conftest.py in the tests/ subdirectory of the repo?"
     )
 
-# ── Hermes agent discovery (mirrors api/config._discover_agent_dir) ───────
+# ── Ov3rwatch agent discovery (mirrors api/config._discover_agent_dir) ───────
 def _discover_agent_dir() -> pathlib.Path:
     candidates = [
         os.getenv('HERMES_WEBUI_AGENT_DIR', ''),

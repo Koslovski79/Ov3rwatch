@@ -1,6 +1,6 @@
-# Hermes Web UI — Themes
+# Ov3rwatch Web UI — Themes
 
-Hermes Web UI supports pluggable color themes. Seven themes ship built-in, and
+Ov3rwatch Web UI supports pluggable color themes. Seven themes ship built-in, and
 you can create your own with pure CSS — no Python changes needed.
 
 ---

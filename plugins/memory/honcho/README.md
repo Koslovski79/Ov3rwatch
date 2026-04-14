@@ -28,11 +28,11 @@ Config is read from the first file that exists:
 
 | Priority | Path | Scope |
 |----------|------|-------|
-| 1 | `$HERMES_HOME/honcho.json` | Profile-local (isolated Hermes instances) |
+| 1 | `$HERMES_HOME/honcho.json` | Profile-local (isolated Ov3rwatch instances) |
 | 2 | `~/.hermes/honcho.json` | Default profile (shared host blocks) |
 | 3 | `~/.honcho/config.json` | Global (cross-app interop) |
 
-Host key is derived from the active Hermes profile: `hermes` (default) or `hermes.<profile>`.
+Host key is derived from the active Ov3rwatch profile: `hermes` (default) or `hermes.<profile>`.
 
 ## Tools
 
@@ -176,7 +176,7 @@ Host key derivation: `HERMES_HONCHO_HOST` env > active profile (`hermes.<profile
 | `hermes honcho tokens --context <N>` | Set context token budget |
 | `hermes honcho tokens --dialectic <N>` | Set dialectic max chars |
 | `hermes honcho map <name>` | Map current directory to a session name |
-| `hermes honcho sync` | Create host blocks for all Hermes profiles |
+| `hermes honcho sync` | Create host blocks for all Ov3rwatch profiles |
 
 ## Example Config
 

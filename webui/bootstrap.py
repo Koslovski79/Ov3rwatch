@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-shot bootstrap launcher for Hermes Web UI."""
+"""One-shot bootstrap launcher for Ov3rwatch Web UI."""
 
 from __future__ import annotations
 
@@ -122,7 +122,7 @@ def hermes_command_exists() -> bool:
 
 
 def install_hermes_agent() -> None:
-    info(f"Hermes Agent not found. Attempting install via {INSTALLER_URL}")
+    info(f"Ov3rwatch Agent not found. Attempting install via {INSTALLER_URL}")
     subprocess.run(
         ["/bin/bash", "-lc", f"curl -fsSL {INSTALLER_URL} | bash"], check=True
     )
@@ -151,7 +151,7 @@ def open_browser(url: str) -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Bootstrap Hermes Web UI onboarding.")
+    parser = argparse.ArgumentParser(description="Bootstrap Ov3rwatch Web UI onboarding.")
     parser.add_argument("port", nargs="?", type=int, default=DEFAULT_PORT)
     parser.add_argument("--host", default=DEFAULT_HOST)
     parser.add_argument(
@@ -162,7 +162,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--skip-agent-install",
         action="store_true",
-        help="Fail instead of attempting the official Hermes installer.",
+        help="Fail instead of attempting the official Ov3rwatch installer.",
     )
     return parser.parse_args()
 
@@ -175,7 +175,7 @@ def main() -> int:
     if not agent_dir and not hermes_command_exists():
         if args.skip_agent_install:
             raise RuntimeError(
-                "Hermes Agent was not found and auto-install was disabled."
+                "Ov3rwatch Agent was not found and auto-install was disabled."
             )
         install_hermes_agent()
         agent_dir = discover_agent_dir()
@@ -194,7 +194,7 @@ def main() -> int:
     if agent_dir:
         env["HERMES_WEBUI_AGENT_DIR"] = str(agent_dir)
 
-    info(f"Starting Hermes Web UI on http://{args.host}:{args.port}")
+    info(f"Starting Ov3rwatch Web UI on http://{args.host}:{args.port}")
     with log_path.open("ab") as log_file:
         proc = subprocess.Popen(
             [python_exe, str(REPO_ROOT / "server.py")],

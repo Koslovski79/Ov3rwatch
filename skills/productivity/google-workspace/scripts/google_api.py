@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Google Workspace API CLI for Hermes Agent.
+"""Google Workspace API CLI for Ov3rwatch Agent.
 
 Thin wrapper that delegates to gws (googleworkspace/cli) via gws_bridge.py.
-Maintains the same CLI interface for backward compatibility with Hermes skills.
+Maintains the same CLI interface for backward compatibility with Ov3rwatch skills.
 
 Usage:
   python google_api.py gmail search "is:unread" [--max 10]
@@ -207,7 +207,7 @@ def docs_get(args):
 # -- CLI parser (backward-compatible interface) --
 
 def main():
-    parser = argparse.ArgumentParser(description="Google Workspace API for Hermes Agent (gws backend)")
+    parser = argparse.ArgumentParser(description="Google Workspace API for Ov3rwatch Agent (gws backend)")
     sub = parser.add_subparsers(dest="service", required=True)
 
     # --- Gmail ---

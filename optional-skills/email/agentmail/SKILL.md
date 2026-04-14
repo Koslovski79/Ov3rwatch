@@ -44,7 +44,7 @@ mcp_servers:
       AGENTMAIL_API_KEY: "am_your_key_here"
 ```
 
-### 3. Restart Hermes
+### 3. Restart Ov3rwatch
 ```bash
 hermes
 ```

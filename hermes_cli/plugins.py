@@ -1,5 +1,5 @@
 """
-Hermes Plugin System
+Ov3rwatch Plugin System
 ====================
 
 Discovers, loads, and manages plugins from three sources:
