@@ -114,6 +114,14 @@ _HERMES_CORE_TOOLS = [
     "approval_add_denylist",
     "approval_list_rules",
     "approval_clear_denylist",
+    # Multi-agent registry
+    "agent_register",
+    "agent_get",
+    "agent_list",
+    "agent_update",
+    "agent_delete",
+    "agent_init_defaults",
+    "agent_route_task",
 ]
 
 
