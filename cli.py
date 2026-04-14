@@ -9024,12 +9024,12 @@ class HermesCLI:
             _welcome_skin = get_active_skin()
             _welcome_text = _welcome_skin.get_branding(
                 "welcome",
-                "Welcome to Hermes Agent! Type your message or /help for commands.",
+                "> Ov3rwatch initialized. Type message or /help for commands.",
             )
             _welcome_color = _welcome_skin.get_color("banner_text", "#FFF8DC")
         except Exception:
             _welcome_text = (
-                "Welcome to Hermes Agent! Type your message or /help for commands."
+                "> Ov3rwatch initialized. Type message or /help for commands."
             )
             _welcome_color = "#FFF8DC"
         self.console.print(f"[{_welcome_color}]{_welcome_text}[/]")
